@@ -1,0 +1,4 @@
+{
+  "task_id": "user_001",
+  "task": "Write the text HELLO_USER_TEST into /workspace/user_test_001.txt, then return final answer."
+}

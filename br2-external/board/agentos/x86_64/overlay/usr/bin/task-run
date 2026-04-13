@@ -1,0 +1,133 @@
+#!/bin/sh
+#
+# task-run — AgentOS 任务执行与日志记录脚本
+#
+# 用法：
+#   task-run <command> [args...]
+#
+# 行为：
+#   1. 生成唯一 task_id（格式: YYYYMMDDTHHMMSSZ-NNNN）
+#   2. 在 tasks/YYYYMMDD/ 下创建 .log 文件
+#   3. 向 tasks/index.jsonl 追加一条 running 状态记录
+#   4. 执行命令，stdout/stderr 重定向到 .log 文件
+#   5. 更新 index.jsonl 中的状态为 done/failed（append-only 策略，追加新行保留原 running 行）
+#
+# 依赖（纯 POSIX）：date, mkdir, sh, awk, sed, cat, mv, printf
+# 不依赖：jq, python, flock（ BusyBox ash 内置不支持 flock）
+#
+
+set -eu
+
+LOG_ROOT="/var/log/sandbox/tasks"
+INDEX="$LOG_ROOT/index.jsonl"
+
+# ------------------------------------------------------------
+# 0. 参数校验
+# ------------------------------------------------------------
+if [ $# -eq 0 ]; then
+    echo "Usage: task-run <command> [args...]" >&2
+    exit 1
+fi
+
+# 将 command 整体转为可打印字符串（用于 JSON 字段）
+# 使用 printf %q 将每个参数转义，空格转为 \x20 等
+_cmd_str=""
+for _arg in "$@"; do
+    _quoted=$(printf '%s' "$_arg" | sed 's/\\/\\\\/g; s/"/\\"/g')
+    _cmd_str="$_cmd_str\"$_quoted\","
+done
+# 去掉末尾逗号，拼成 JSON 数组片段
+_command_json="[${_cmd_str%,}]"
+
+# ------------------------------------------------------------
+# 1. 生成 task_id（原子递增序号）
+# ------------------------------------------------------------
+_date=$(date -u '+%Y%m%d')
+_ts=$(date -u '+%Y%m%dT%H%M%SZ')
+_seq_file="$LOG_ROOT/.seq.${_date}"
+
+# 序号原子递增：先写临时文件，再 mv（同文件系统原子操作）
+# 即使两个 task-run 并发执行也不会丢失序号
+# -f 强制覆盖，不弹交互确认（BusyBox ash 中目标存在时会等 stdin 输入）
+_seq=$(cat "$_seq_file" 2>/dev/null || echo 0)
+_seq=$((_seq + 1))
+printf '%s' "$_seq" > "$LOG_ROOT/.seq.${_date}.tmp"
+mv -f "$LOG_ROOT/.seq.${_date}.tmp" "$_seq_file"
+
+_task_id="${_ts}-$(printf '%04d' "$_seq")"
+
+# ------------------------------------------------------------
+# 2. 创建当日目录
+# ------------------------------------------------------------
+_log_dir="$LOG_ROOT/$_date"
+mkdir -p "$_log_dir"
+
+_log_path="$_log_dir/${_task_id}.log"
+_log_path_relative="tasks/$_date/${_task_id}.log"
+
+# ------------------------------------------------------------
+# 3. 写 index.jsonl（running 状态）
+# ------------------------------------------------------------
+_start_ts=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+_user=$(id -nu)
+_cwd=$(pwd)
+
+# 构造 JSON 行（纯 shell，无 jq）
+# 字段顺序固定，方便用 awk -F'"' 按位置切片
+_index_line=$(printf '{"task_id":"%s","ts":"%s","user":"%s","cwd":"%s","command":%s,"log_path":"%s","status":"running","exit_code":null}' \
+    "$_task_id" "$_start_ts" "$_user" "$_cwd" "$_command_json" "$_log_path_relative")
+
+printf '%s\n' "$_index_line" >> "$INDEX"
+
+# ------------------------------------------------------------
+# 4. 执行命令并记录 stdout/stderr
+# ------------------------------------------------------------
+# 日志文件头部：任务元数据注释（方便人读）
+{
+    printf '# task_id: %s\n' "$_task_id"
+    printf '# ts: %s\n' "$_start_ts"
+    printf '# cwd: %s\n' "$_cwd"
+    printf '# command: '
+    printf '%s ' "$@"
+    printf '\n'
+    printf '+ '
+    printf '%s ' "$@"
+    printf '\n'
+} > "$_log_path"
+
+# 执行命令：追加到日志文件，同时透传到终端（tee -a）
+# BusyBox ash 不支持 PIPESTATUS，用 set +e + $? 中转退出码
+set +e
+"$@" 2>&1 | tee -a "$_log_path"; _exit=$?
+set -e
+
+# ------------------------------------------------------------
+# 5. 更新 index.jsonl（追加新行，保留原 running 行）
+#
+# 注意：index.jsonl 设置了 chattr +a（append-only 属性），
+#       sed -i 原地覆写会失败（EPERM），改用追加新行策略：
+#         - 原 "running" 行保留（不可删除也不可覆盖）
+#         - 在末尾追加更新后的行（status= done/failed + exit_code）
+#         - 最终文件每条任务有两行：第一行 running，第二行 final 状态
+#         - 解析时取每 task_id 的最后一条即可
+# ------------------------------------------------------------
+_end_ts=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+
+if [ $_exit -eq 0 ]; then
+    _status="done"
+else
+    if [ $_exit -ge 128 ]; then
+        _status="signal"
+    else
+        _status="failed"
+    fi
+fi
+
+_new_line=$(printf '{"task_id":"%s","ts":"%s","user":"%s","cwd":"%s","command":%s,"log_path":"%s","status":"%s","exit_code":%s}' \
+    "$_task_id" "$_start_ts" "$_user" "$_cwd" "$_command_json" "$_log_path_relative" "$_status" "$_exit")
+
+printf '%s\n' "$_new_line" >> "$INDEX"
+
+# ------------------------------------------------------------
+# 6. 完成
+# ------------------------------------------------------------

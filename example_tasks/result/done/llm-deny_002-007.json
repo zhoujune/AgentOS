@@ -1,0 +1,10 @@
+{
+  "request_id": "llm-deny_002-007",
+  "ts": "2026-04-12T08:53:05.380079+00:00",
+  "ok": true,
+  "assistant_text": "{\"tool\":\"final\",\"answer\":\"Cannot modify /etc/passwd without root privileges\"}",
+  "raw_response": {
+    "finish_reason": "stop"
+  },
+  "error": null
+}

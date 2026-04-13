@@ -1,0 +1,10 @@
+{
+  "request_id": "llm-deny_001-001",
+  "ts": "2026-04-12T08:52:23.093956+00:00",
+  "ok": true,
+  "assistant_text": "{\"tool\":\"fs\",\"action\":\"list\",\"path\":\"/protected\"}",
+  "raw_response": {
+    "finish_reason": "stop"
+  },
+  "error": null
+}

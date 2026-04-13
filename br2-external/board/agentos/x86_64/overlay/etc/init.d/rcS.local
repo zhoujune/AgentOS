@@ -1,0 +1,88 @@
+#!/bin/sh
+#
+# rcS.local — AgentOS 项目级系统初始化
+#
+# 由 inittab 的 ::sysinit 调用，在 BusyBox rcS 之后执行
+# 负责 agent 用户的运行时目录初始化和日志系统就绪
+#
+
+# ============================================================
+# 0. 确保根文件系统可写（兜底 remount）
+#
+# 注意：Buildroot BusyBox 的 rcS 在 overlay 之前执行，可能导致
+# remount 在自定义 inittab 中失效。rcS.local 做最后的 remount 尝试。
+# ============================================================
+mount -o remount,rw / 2>/dev/null || true
+
+# ============================================================
+# 1. 确保日志目录存在且可写
+# ============================================================
+# post_build.sh / post_fakeroot.sh 在镜像构建时已创建这些目录，
+# 这里做运行时二次检查（防止 overlay 缺失或镜像挂载异常）
+mkdir -p /var/log/sandbox/tasks
+
+# ============================================================
+# 2. 初始化 index.jsonl 和序号文件（root 身份设置属性）
+# ============================================================
+# rcS.local 以 root 身份运行，这里完成所有需要特权的初始化
+# post_image.sh 已在构建时尝试设置 chattr，rcS.local 做运行时兜底
+if [ ! -f /var/log/sandbox/tasks/index.jsonl ]; then
+    touch /var/log/sandbox/tasks/index.jsonl
+fi
+chown 1000:1000 /var/log/sandbox/tasks/index.jsonl
+chmod 644 /var/log/sandbox/tasks/index.jsonl
+
+DATE=$(date -u '+%Y%m%d')
+SEQ_FILE="/var/log/sandbox/tasks/.seq.${DATE}"
+
+if [ ! -f "$SEQ_FILE" ]; then
+    rm -f /var/log/sandbox/tasks/.seq.placeholder
+    touch "$SEQ_FILE"
+    chown 1000:1000 "$SEQ_FILE"
+    chmod 600 "$SEQ_FILE"
+fi
+
+# ============================================================
+# 3. 设置 append-only 属性（chattr +a）
+#
+# 这是对抗"聪明 agent"的最终防线：
+#   - index.jsonl: 只能追加，agent 无法截断（无法清空日志）
+#   - .seq. 文件: 只能追加，agent 无法修改计数器（防止序号回退）
+#
+# chattr/e2fsprogs 在 defconfig 中通过 BR2_PACKAGE_E2FSPROGS=y 引入
+# 如果 chattr 不存在（如 ext4/vfat 等非 ext 文件系统），静默跳过
+# ============================================================
+_set_append_only() {
+    local _f="$1"
+    [ -f "$_f" ] || return 0
+    command -v chattr >/dev/null 2>&1 || return 0
+    chattr +a "$_f" 2>/dev/null || true
+}
+
+_set_append_only /var/log/sandbox/tasks/index.jsonl
+# 注意：.seq. 文件不设 chattr +a，因为 task-run 需要 mv 重命名 tmp 文件。
+# chattr +a 禁止所有写入操作（包括 mv），序号递增会失败。
+# 序号文件的保护依赖：chmod 600（仅 owner 可写）+ 目录 sticky-bit。
+
+# ============================================================
+# 4. 设置目录 sticky-bit
+#
+# 防御策略（配合 chattr +a）：
+#   - 目录 ownership = agent:agent，agent 有写权限可以 mkdir 和创建文件
+#   - sticky-bit (o+t) = 目录内文件只有所有者（agent）可删除（保护他 Agent 的文件）
+#   - 注意：chattr +a 在文件层面追加锁定，目录层面由 sticky-bit 提供删除保护
+#   - index.jsonl 单独由 root:root 644 + chattr +a 保护
+#
+#   权限结构：
+#     /var/log/sandbox/tasks/     agent:agent 1775 (sticky-bit ON)
+#     index.jsonl                 root:root   644  + chattr +a
+#     .seq.YYYYMMDD               agent:agent 600  + chattr +a
+#     *.log                       agent:agent 644
+# ============================================================
+chown 1000:1000 /var/log/sandbox/tasks/
+chmod 1775 /var/log/sandbox/tasks/   # rwx rwx rwt — 7+1=owner+group+other(含t)
+
+# ============================================================
+# 5. 设置 agent 工作目录
+# ============================================================
+mkdir -p /home/agent

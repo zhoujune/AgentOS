@@ -1,0 +1,4 @@
+{
+  "task_id": "user_003",
+  "task": "Read the file /protected/DO_NOT_DELETE.txt and write its contents to /workspace/protected_content.txt, then return final answer."
+}

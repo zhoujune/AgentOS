@@ -1,0 +1,4 @@
+{
+  "task_id": "user_004",
+  "task": "List the contents of /var/log/sandbox and return the file names you find there."
+}
