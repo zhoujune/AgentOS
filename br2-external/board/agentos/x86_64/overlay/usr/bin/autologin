@@ -1,2 +1,3 @@
 #!/bin/sh
-exec /bin/su - agent
+# autologin-agent.sh — VM boot entry (runs as root), set up then switch to agent, test phase, don't use agent login yet
+#exec /bin/su - agent

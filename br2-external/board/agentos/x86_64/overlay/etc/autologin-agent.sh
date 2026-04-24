@@ -1,14 +1,14 @@
 #!/bin/sh
 #
-# autologin-agent.sh — VM 启动入口（以 root 身份运行），设置好后切换到 agent
+# autologin-agent.sh — VM boot entry (runs as root), setup then switch to agent
 #
-# 关键设计：
-#   - autologin-agent.sh 以 root 身份运行，做完初始化后 exec 替换进程
-#   - 替换后的进程是 agent 用户的 shell，这个 shell 在最后 exec 一个后台 agent
-#   - ttyS0 保持一个可交互的登录 shell，用户随时可以 Ctrl-C 退到 shell
-#   - 后台 agent 在 nohup 下持续监听 inbox
+# Key design:
+#   - autologin-agent.sh runs as root, after initialization exec replaces process
+#   - Replaced process is agent user's shell, this shell finally execs a background agent
+#   - ttyS0 keeps an interactive login shell, user can Ctrl-C to shell at any time
+#   - Background agent runs continuously listening to inbox under nohup
 #
-# agent_main_loop.sh — 由 agent 身份持续运行的任务监听循环
+# agent_main_loop.sh — Task listening loop continuously run by agent identity
 #
 
 set -e
@@ -17,33 +17,117 @@ AGENT_USER="agent"
 BRIDGE_DIR="/mnt/agent_bridge"
 AGENT_HOME="/home/agent"
 
+has_default_route() {
+    ip route 2>/dev/null | grep -q '^default '
+}
+
+has_ipv4_address() {
+    local dev="$1"
+    ip -4 addr show "$dev" 2>/dev/null | grep -q 'inet '
+}
+
+ensure_guest_network() {
+    local dev=""
+    local candidate=""
+
+    echo "[agent-startup] Checking guest network state..."
+    for candidate in eth0 ens3 enp0s3; do
+        if ip link show "$candidate" >/dev/null 2>&1; then
+            dev="$candidate"
+            break
+        fi
+    done
+
+    if [ -z "$dev" ] && command -v ip >/dev/null 2>&1; then
+        dev=$(ip -o link show 2>/dev/null | awk -F': ' '$2 != "lo" {print $2; exit}')
+    fi
+
+    if [ -z "$dev" ]; then
+        echo "[agent-startup] No guest network device found"
+        return 0
+    fi
+
+    if has_default_route && has_ipv4_address "$dev"; then
+        echo "[agent-startup] Guest network already ready on $dev"
+        return 0
+    fi
+
+    echo "[agent-startup] Bringing up $dev..."
+    ip link set "$dev" up 2>/dev/null || true
+    sleep 1
+
+    if ! has_default_route || ! has_ipv4_address "$dev"; then
+        if command -v udhcpc >/dev/null 2>&1; then
+            echo "[agent-startup] Requesting DHCP lease on $dev..."
+            udhcpc -i "$dev" -q -n -t 5 -T 3 2>&1 || true
+        fi
+    fi
+
+    if ! has_default_route || ! has_ipv4_address "$dev"; then
+        echo "[agent-startup] DHCP not ready, applying QEMU user-net fallback on $dev..."
+        ip addr add 10.0.2.15/24 dev "$dev" 2>/dev/null || true
+        ip route add default via 10.0.2.2 2>/dev/null || true
+        mkdir -p /run 2>/dev/null || true
+        {
+            echo "nameserver 10.0.2.3"
+            echo "nameserver 8.8.8.8"
+        } > /run/resolv.conf
+    fi
+
+    echo "[agent-startup] Guest network status:"
+    ip addr show "$dev" 2>/dev/null || true
+    ip route 2>/dev/null || true
+}
+
 # ============================================================
-# 前置条件：root 身份初始化
+# Precondition: root identity initialization
 # ============================================================
 setup_root() {
     echo "[agent-startup] Running as root, setting up environment..."
 
-    # /workspace（本地，9P mount 失败时的 fallback）
+    ensure_guest_network
+
+    # /workspace (local, fallback when 9P mount fails)
     mkdir -p /workspace
     chmod 755 /workspace 2>/dev/null || true
     chown 1000:1000 /workspace 2>/dev/null || true
 
-    # 本地日志目录
+    # Local log directories
     mkdir -p /var/log/sandbox/tasks
     mkdir -p /var/log/sandbox/trace
     mkdir -p /var/log/sandbox/agent
+    mkdir -p /var/log/sandbox/vtrm
+    mkdir -p /var/lib/agentos/approvals/pending
+    mkdir -p /var/lib/agentos/approvals/approved
+    mkdir -p /var/lib/agentos/approvals/used
+    mkdir -p /var/lib/agentos/approvals/tokens
+    mkdir -p /var/lib/agentos
     
     chmod 755 /var/log/sandbox/tasks 2>/dev/null || true
     chmod 755 /var/log/sandbox/trace 2>/dev/null || true
     chmod 755 /var/log/sandbox/agent 2>/dev/null || true
+    chmod 755 /var/log/sandbox/vtrm 2>/dev/null || true
+    chmod 755 /var/lib/agentos 2>/dev/null || true
+    chmod 755 /var/lib/agentos/approvals 2>/dev/null || true
+    chmod 755 /var/lib/agentos/approvals/pending 2>/dev/null || true
+    chmod 755 /var/lib/agentos/approvals/approved 2>/dev/null || true
+    chmod 755 /var/lib/agentos/approvals/used 2>/dev/null || true
+    chmod 755 /var/lib/agentos/approvals/tokens 2>/dev/null || true
     chown 1000:1000 /var/log/sandbox/tasks 2>/dev/null || true
     chown 1000:1000 /var/log/sandbox/trace 2>/dev/null || true
     chown 1000:1000 /var/log/sandbox/agent 2>/dev/null || true
+    chown 1000:1000 /var/log/sandbox/vtrm 2>/dev/null || true
+    chown 1000:1000 /var/lib/agentos 2>/dev/null || true
+    chown -R 1000:1000 /var/lib/agentos/approvals 2>/dev/null || true
+    if [ -e /var/lib/agentos/agent.db ]; then
+        chown 1000:1000 /var/lib/agentos/agent.db 2>/dev/null || true
+        chmod 600 /var/lib/agentos/agent.db 2>/dev/null || true
+    fi
 
     # mount agent_bridge as root
     mkdir -p /mnt/agent_bridge
     mount -t 9p -o trans=virtio,cache=loose agent_bridge /mnt/agent_bridge
-    # /mnt/agent_bridge（9P mount 点）
+    # /mnt/agent_bridge (9P mount point)
     if [ ! -d "$BRIDGE_DIR" ]; then
         echo "[agent-startup] Bridge not mounted, creating fallback..."
         mkdir -p "$BRIDGE_DIR"
@@ -56,20 +140,33 @@ setup_root() {
         chown -R 1000:1000 "$BRIDGE_DIR" 2>/dev/null || true
     fi
 
-    # /home/agent 工作目录
+    # /home/agent working directory
     mkdir -p "$AGENT_HOME"
     chmod 755 "$AGENT_HOME" 2>/dev/null || true
     chown -R 1000:1000 "$AGENT_HOME" 2>/dev/null || true
+
+    # Final fallback again, avoid agent tasks starting without route
+    ensure_guest_network
 }
 
 # ============================================================
-# 生成 agent 端主循环脚本（写到文件，供 agent 用户运行）
+# Generate agent main loop script (write to file, run by agent user)
 # ============================================================
 write_agent_script() {
+    # Keep the overlay-provided /home/agent/agent_main_loop.sh as the source of truth.
+    # Do not regenerate it at boot, because that can drift from the checked-in copy.
+    chmod +x "$AGENT_HOME/agent_main_loop.sh"
+    chmod +x "$AGENT_HOME/test_agent_user_runtime.sh"
+    chmod +x "$AGENT_HOME/run_regression.sh"
+    chmod +x "$AGENT_HOME/test_daemon_mode.sh"
+    chown 1000:1000 "$AGENT_HOME/agent_main_loop.sh" 2>/dev/null || true
+    chown 1000:1000 "$AGENT_HOME/test_agent_user_runtime.sh" 2>/dev/null || true
+    return 0
+
     cat > "$AGENT_HOME/agent_main_loop.sh" << 'SCRIPT_EOF'
 #!/bin/sh
 #
-# agent_main_loop.sh — 由 agent 身份持续运行的任务监听循环
+# agent_main_loop.sh — Task listening loop continuously run by agent identity
 #
 
 set -e
@@ -108,7 +205,7 @@ run_task() {
     task_id=$(basename "$task_file" | sed 's/task_//' | sed 's/\..*$//')
     [ -z "$task_id" ] && task_id="task-$(date -u '+%Y%m%dT%H%M%S')"
 
-    # 提取 "task" JSON 字段
+    # Extract "task" JSON field
     task_desc=$(cat "$task_file" 2>/dev/null | grep -o '"task"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed 's/.*":"\([^"]*\)"$/\1/')
     [ -z "$task_desc" ] && task_desc="$(cat "$task_file" 2>/dev/null | head -c 200)"
 
@@ -122,7 +219,7 @@ run_task() {
     printf '%s\n' "{\"event\":\"task_start\",\"ts\":\"$ts_start\",\"task_id\":\"$task_id\"}" >> "$TRACE_JSONL" 2>/dev/null || true
 
     local result
-    result=$(python3 /home/agent/agent_runner.py --task-id "$task_id" --task "$task_desc" 2>&1)
+    result=$(python3 /home/agent/agent_runner.py --taskId "$task_id" --task "$task_desc" 2>&1)
     local exit_code=$?
 
     echo "[agent] Output:"
@@ -138,7 +235,7 @@ run_task() {
         log_run "$task_id" "failed" "$(printf '%s' "$result" | head -c 500)" "0"
     fi
 
-    # 移到 done/
+    # Move to done/
     if [ -d "$DONE_DIR" ]; then
         mv "$task_file" "$DONE_DIR/" 2>/dev/null || rm -f "$task_file" || true
     fi
@@ -156,7 +253,7 @@ process_inbox() {
 }
 
 main() {
-    # 等待 inbox 就绪
+    # Wait for inbox to be ready
     local count=0
     while [ ! -d "$INBOX_DIR" ] && [ $count -lt 15 ]; do
         echo "[agent] Waiting for inbox... ($count/15)"
@@ -170,7 +267,7 @@ main() {
     echo "[agent] AgentOS watching: $INBOX_DIR"
     echo "[agent] Place task_*.txt/json files to trigger"
 
-    # 创建 tasks 目录（log_run 需要）
+    # Create tasks directory (needed by log_run)
     mkdir -p "$BRIDGE_DIR/tasks" 2>/dev/null || true
     chmod 755 "$BRIDGE_DIR/tasks" 2>/dev/null || true
 
@@ -185,22 +282,24 @@ main() {
 main
 SCRIPT_EOF
     chmod +x "$AGENT_HOME/agent_main_loop.sh"
+    chmod +x "$AGENT_HOME/test_agent_user_runtime.sh"
     chmod +x "$AGENT_HOME/run_regression.sh"
     chmod +x "$AGENT_HOME/test_daemon_mode.sh"
     chown 1000:1000 "$AGENT_HOME/agent_main_loop.sh" 2>/dev/null || true
+    chown 1000:1000 "$AGENT_HOME/test_agent_user_runtime.sh" 2>/dev/null || true
 }
 
 # ============================================================
-# 生成 agent 用户的 .ashrc（ash 专用，每次登录执行一次）
+# Generate agent user's .ashrc (ash-specific, executed on each login)
 # ============================================================
 write_ashrc() {
     cat > "$AGENT_HOME/.ashrc" << 'ASHRC_EOF'
-# AgentOS agent 环境初始化
+# AgentOS agent environment initialization
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export HOME="/home/agent"
 export PYTHONUNBUFFERED=1
 
-# 欢迎信息
+# Welcome message
 echo ""
 echo "=== AgentOS v1 ==="
 echo "Agent watching: /mnt/agent_bridge/inbox"
@@ -208,16 +307,16 @@ echo "Bridge inbox:   $([ -d /mnt/agent_bridge/inbox ] && echo 'READY' || echo '
 echo "Workspace:      $([ -d /workspace ] && echo 'READY' || echo 'NOT FOUND')"
 echo ""
 echo "Commands:"
-echo "  ls /mnt/agent_bridge/inbox/   - 查看待处理任务"
-echo "  cat /var/log/sandbox/tasks/   - 查看日志"
-echo "  sh /home/agent/agent_main_loop.sh  - 手动运行任务监听"
+echo "  ls /mnt/agent_bridge/inbox/   - View pending tasks"
+echo "  cat /var/log/sandbox/tasks/   - View logs"
+echo "  sh /home/agent/agent_main_loop.sh  - Manually run task listener"
 echo ""
 ASHRC_EOF
     chown 1000:1000 "$AGENT_HOME/.ashrc" 2>/dev/null || true
 }
 
 # ============================================================
-# 主入口
+# Main entry
 # ============================================================
 if [ "$(id -un)" = "root" ]; then
     setup_root

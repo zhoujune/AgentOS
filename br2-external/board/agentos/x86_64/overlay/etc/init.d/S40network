@@ -1,14 +1,14 @@
 #!/bin/sh
 #
-# S40network — AgentOS 网络初始化脚本
+# S40network — AgentOS network initialization script
 #
-# 功能：
-#   1. 等待网络设备就绪
-#   2. 配置 virtio-net 网卡
-#   3. 启动 DHCP 客户端获取 IP
-#   4. 配置 DNS 和默认路由
+# Functions:
+#   1. Wait for network device to be ready
+#   2. Configure virtio-net network interface
+#   3. Start DHCP client to get IP
+#   4. Configure DNS and default route
 #
-# 由 inittab 的 ::sysinit 调用，在 rcS.local 之前执行
+# Called by inittab ::sysinit, executed before rcS.local
 #
 
 set -e
@@ -25,96 +25,119 @@ log_jsonl() {
     printf '%s\n' "{\"event\":\"$event\",\"ts\":\"$ts\",\"$*\"}" >> "$TRACE_JSONL" 2>/dev/null || true
 }
 
-# 检测网卡名称
+has_ipv4_address() {
+    local dev="$1"
+    ip -4 addr show "$dev" 2>/dev/null | grep -q 'inet '
+}
+
+has_default_route() {
+    ip route 2>/dev/null | grep -q '^default '
+}
+
+# Detect network device name
 detect_netdev() {
-    # virtio-net 通常命名为 eth0，但在某些情况下可能是其他名称
-    # 检查常见的网卡名
+    # virtio-net is usually named eth0, but may be other names in some cases
+    # Check common network device names
     for dev in eth0 ens3 enp0s3; do
-        if [ -d "/sys/class/net/$dev" ]; then
+        if ip link show "$dev" >/dev/null 2>&1; then
             echo "$dev"
             return 0
         fi
     done
 
-    # 动态检测：找第一个 UP 或已存在的网卡
-    for dev in /sys/class/net/*; do
-        [ -d "$dev" ] || continue
-        name="${dev##*/}"
-        # 跳过回环和虚拟设备
-        case "$name" in
-            lo|bridge|docker|virbr) continue ;;
-        esac
-        echo "$name"
-        return 0
-    done
+    # Dynamic detection: find first available non-lo device via ip link
+    if command -v ip >/dev/null 2>&1; then
+        ip -o link show 2>/dev/null | while IFS=: read -r idx name rest; do
+            name=$(echo "$name" | tr -d ' ')
+            case "$name" in
+                ""|lo|bridge|docker*|virbr*) continue ;;
+            esac
+            echo "$name"
+            return 0
+        done
+    fi
 
-    echo "eth0"  # 默认 fallback
+    echo "eth0"  # Default fallback
     return 1
 }
 
-# 启动网络
+# Start network
 start_network() {
     echo "[network] Starting network initialization..."
 
-    # 等待设备初始化
+    # Wait for device initialization
     sleep 2
 
-    # 检测网卡
+    # Detect network device
     NETDEV=$(detect_netdev)
     echo "[network] Detected network device: $NETDEV"
 
-    # 确保设备存在
-    if [ ! -d "/sys/class/net/$NETDEV" ]; then
+    # Ensure device exists
+    if ! ip link show "$NETDEV" >/dev/null 2>&1; then
         echo "[network] ERROR: Device $NETDEV not found"
         log_jsonl "network_error" "reason=device_not_found" "device=$NETDEV"
         return 1
     fi
 
-    # 启用网卡
+    # Enable network device
     ip link set "$NETDEV" up
     echo "[network] Brought up $NETDEV"
 
-    # 等待网卡稳定
+    # Wait for device to stabilize
     sleep 1
 
-    # 尝试 DHCP 获取 IP
+    # Try DHCP to get IP
     if command -v udhcpcd >/dev/null 2>&1; then
         echo "[network] Starting udhcpcd..."
         udhcpcd -d "$NETDEV" 2>&1 || true
     elif command -v udhcpc >/dev/null 2>&1; then
         echo "[network] Starting udhcpc..."
-        udhcpc -i "$NETDEV" -q 2>&1 || true
+        udhcpc -i "$NETDEV" -q -n -t 5 -T 3 2>&1 || true
     else
         echo "[network] No DHCP client found, using static IP"
         configure_static_ip "$NETDEV"
     fi
 
-    # 显示结果
+    # If DHCP didn't produce usable network state, fallback to QEMU user-net static config
+    if ! has_ipv4_address "$NETDEV" || ! has_default_route; then
+        echo "[network] DHCP did not produce a usable route, falling back to static QEMU user-net config"
+        configure_static_ip "$NETDEV"
+    fi
+
+    # Show results
     sleep 1
     echo "[network] Current network status:"
     ip addr show "$NETDEV" 2>/dev/null | grep "inet " || echo "[network] No IP address assigned"
+    ip route 2>/dev/null || true
 
-    # 记录成功日志
+    # Log success
     local ip_addr
     ip_addr=$(ip -4 addr show "$NETDEV" 2>/dev/null | grep -o 'inet [0-9.]*' | awk '{print $2}' || echo "none")
-    log_jsonl "network_started" "device=$NETDEV" "ip=$ip_addr"
+    local route_state
+    if has_default_route; then
+        route_state="default_route_present"
+    else
+        route_state="default_route_missing"
+    fi
+    log_jsonl "network_started" "device=$NETDEV" "ip=$ip_addr" "route=$route_state"
     echo "[network] Network initialization complete"
 }
 
-# 配置静态 IP（备用方案，配合 QEMU user 网络）
+# Configure static IP (backup plan, with QEMU user network)
 configure_static_ip() {
     local dev="$1"
-    # QEMU user NAT 默认: 10.0.2.15/24, gateway: 10.0.2.2
+    # QEMU user NAT default: 10.0.2.15/24, gateway: 10.0.2.2
+    ip link set "$dev" up 2>/dev/null || true
     ip addr add 10.0.2.15/24 dev "$dev" 2>/dev/null || true
     ip route add default via 10.0.2.2 2>/dev/null || true
 
-    # 设置 DNS
+    # Set DNS
     mkdir -p /run
     echo "nameserver 8.8.8.8" > /run/resolv.conf
     echo "nameserver 114.114.114.114" >> /run/resolv.conf
 }
 
-# 停止网络
+# Stop network
 stop_network() {
     local NETDEV
     NETDEV=$(detect_netdev)
@@ -122,7 +145,7 @@ stop_network() {
     echo "[network] Network stopped"
 }
 
-# 主入口
+# Main entry
 case "$1" in
     start)
         start_network

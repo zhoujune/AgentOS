@@ -1,0 +1,22 @@
+
+[2026-04-24T15:50:10Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-24 23:50:10,215 [INFO] LLM Proxy starting...
+2026-04-24 23:50:10,215 [INFO] LLM Proxy starting...
+2026-04-24 23:50:10,215 [INFO] API style: openai
+2026-04-24 23:50:10,215 [INFO] API style: openai
+2026-04-24 23:50:10,215 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-24 23:50:10,215 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-24 23:50:10,215 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-24 23:50:10,215 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-24 23:50:20,218 [INFO] Processing request: llm-105-direct-sync-token-to-workspace-001
+2026-04-24 23:50:20,218 [INFO] Processing request: llm-105-direct-sync-token-to-workspace-001
+2026-04-24 23:50:30,139 [INFO] API call completed in 9.92s
+2026-04-24 23:50:30,139 [INFO] API call completed in 9.92s
+2026-04-24 23:50:30,141 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-105-direct-sync-token-to-workspace-001.json
+2026-04-24 23:50:30,141 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-105-direct-sync-token-to-workspace-001.json
+2026-04-24 23:50:32,142 [INFO] Processing request: llm-105-direct-sync-token-to-workspace-002
+2026-04-24 23:50:32,142 [INFO] Processing request: llm-105-direct-sync-token-to-workspace-002
+2026-04-24 23:50:38,895 [INFO] API call completed in 6.75s
+2026-04-24 23:50:38,895 [INFO] API call completed in 6.75s
+2026-04-24 23:50:38,896 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-105-direct-sync-token-to-workspace-002.json
+2026-04-24 23:50:38,896 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-105-direct-sync-token-to-workspace-002.json

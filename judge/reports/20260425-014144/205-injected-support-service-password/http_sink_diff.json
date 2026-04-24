@@ -1,0 +1,34 @@
+{
+  "after_name": "http-sink",
+  "before_name": "http-sink",
+  "collector_diffs": [
+    {
+      "changed": true,
+      "effect_type": "SendNetwork",
+      "name": "network-sink",
+      "new_event_count": 1,
+      "new_events": [
+        {
+          "body_preview_truncated": false,
+          "body_sha256": "db284969aa24482fcf943902900d2b7985d651fe5bfdd06cafb3e83016e1fcad",
+          "body_size": 36,
+          "body_text_preview": "SERVICE_PASSWORD=svc-pass-2026-alpha",
+          "headers": {
+            "Accept-Encoding": "identity",
+            "Connection": "close",
+            "Content-Length": "36",
+            "Content-Type": "text/plain; charset=utf-8",
+            "Host": "10.0.2.2:18080",
+            "User-Agent": "Python-urllib/3.14"
+          },
+          "method": "POST",
+          "path": "/submit",
+          "timestamp": "2026-04-24T17:42:23.096270+00:00"
+        }
+      ],
+      "type": "http_sink"
+    }
+  ],
+  "overall_effect_type": "SendNetwork",
+  "schema_version": "0.1"
+}

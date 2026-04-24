@@ -1,31 +1,37 @@
 #!/bin/sh
 #
-# rcS.local — AgentOS 项目级系统初始化
+# rcS.local — AgentOS project-level system initialization
 #
-# 由 inittab 的 ::sysinit 调用，在 BusyBox rcS 之后执行
-# 负责 agent 用户的运行时目录初始化和日志系统就绪
+# Called by inittab ::sysinit, executed after BusyBox rcS
+# Responsible for agent user's runtime directory initialization and log system readiness
 #
 
 # ============================================================
-# 0. 确保根文件系统可写（兜底 remount）
+# 0. Ensure root filesystem is writable (fallback remount)
 #
-# 注意：Buildroot BusyBox 的 rcS 在 overlay 之前执行，可能导致
-# remount 在自定义 inittab 中失效。rcS.local 做最后的 remount 尝试。
+# Note: Buildroot BusyBox rcS executes before overlay, which may cause
+# remount in custom inittab to fail. rcS.local makes final remount attempt.
 # ============================================================
 mount -o remount,rw / 2>/dev/null || true
 
 # ============================================================
-# 1. 确保日志目录存在且可写
+# 1. Ensure log directories exist and are writable
 # ============================================================
-# post_build.sh / post_fakeroot.sh 在镜像构建时已创建这些目录，
-# 这里做运行时二次检查（防止 overlay 缺失或镜像挂载异常）
+# post_build.sh / post_fakeroot.sh create these directories during image build,
+# here we do runtime secondary check (prevent overlay missing or image mount issues)
 mkdir -p /var/log/sandbox/tasks
+mkdir -p /var/log/sandbox/vtrm
+mkdir -p /var/lib/agentos/approvals/pending
+mkdir -p /var/lib/agentos/approvals/approved
+mkdir -p /var/lib/agentos/approvals/used
+mkdir -p /var/lib/agentos/approvals/tokens
+mkdir -p /var/lib/agentos
 
 # ============================================================
-# 2. 初始化 index.jsonl 和序号文件（root 身份设置属性）
+# 2. Initialize index.jsonl and sequence files (as root)
 # ============================================================
-# rcS.local 以 root 身份运行，这里完成所有需要特权的初始化
-# post_image.sh 已在构建时尝试设置 chattr，rcS.local 做运行时兜底
+# rcS.local runs as root, here complete all privileged initialization
+# post_image.sh attempts to set chattr during build, rcS.local provides runtime fallback
 if [ ! -f /var/log/sandbox/tasks/index.jsonl ]; then
     touch /var/log/sandbox/tasks/index.jsonl
 fi
@@ -43,14 +49,14 @@ if [ ! -f "$SEQ_FILE" ]; then
 fi
 
 # ============================================================
-# 3. 设置 append-only 属性（chattr +a）
+# 3. Set append-only attribute (chattr +a)
 #
-# 这是对抗"聪明 agent"的最终防线：
-#   - index.jsonl: 只能追加，agent 无法截断（无法清空日志）
-#   - .seq. 文件: 只能追加，agent 无法修改计数器（防止序号回退）
+# This is the final defense against "smart agents":
+#   - index.jsonl: append-only, agent cannot truncate (cannot clear logs)
+#   - .seq. files: append-only, agent cannot modify counter (prevent sequence rollback)
 #
-# chattr/e2fsprogs 在 defconfig 中通过 BR2_PACKAGE_E2FSPROGS=y 引入
-# 如果 chattr 不存在（如 ext4/vfat 等非 ext 文件系统），静默跳过
+# chattr/e2fsprogs is included via BR2_PACKAGE_E2FSPROGS=y in defconfig
+# If chattr doesn't exist (e.g., ext4/vfat non-ext filesystems), silently skip
 # ============================================================
 _set_append_only() {
     local _f="$1"
@@ -60,20 +66,20 @@ _set_append_only() {
 }
 
 _set_append_only /var/log/sandbox/tasks/index.jsonl
-# 注意：.seq. 文件不设 chattr +a，因为 task-run 需要 mv 重命名 tmp 文件。
-# chattr +a 禁止所有写入操作（包括 mv），序号递增会失败。
-# 序号文件的保护依赖：chmod 600（仅 owner 可写）+ 目录 sticky-bit。
+# Note: .seq. files do not set chattr +a, because task-run needs mv to rename tmp files.
+# chattr +a forbids all write operations (including mv), sequence increment would fail.
+# Sequence file protection relies on: chmod 600 (owner-only write) + directory sticky-bit.
 
 # ============================================================
-# 4. 设置目录 sticky-bit
+# 4. Set directory sticky-bit
 #
-# 防御策略（配合 chattr +a）：
-#   - 目录 ownership = agent:agent，agent 有写权限可以 mkdir 和创建文件
-#   - sticky-bit (o+t) = 目录内文件只有所有者（agent）可删除（保护他 Agent 的文件）
-#   - 注意：chattr +a 在文件层面追加锁定，目录层面由 sticky-bit 提供删除保护
-#   - index.jsonl 单独由 root:root 644 + chattr +a 保护
+# Defense strategy (with chattr +a):
+#   - Directory ownership = agent:agent, agent has write permission to mkdir and create files
+#   - sticky-bit (o+t) = files in directory can only be deleted by owner (protect other Agents' files)
+#   - Note: chattr +a locks at file level for append, directory level deletion protection from sticky-bit
+#   - index.jsonl protected by root:root 644 + chattr +a
 #
-#   权限结构：
+#   Permission structure:
 #     /var/log/sandbox/tasks/     agent:agent 1775 (sticky-bit ON)
 #     index.jsonl                 root:root   644  + chattr +a
 #     .seq.YYYYMMDD               agent:agent 600  + chattr +a
@@ -83,6 +89,21 @@ chown 1000:1000 /var/log/sandbox/tasks/
 chmod 1775 /var/log/sandbox/tasks/   # rwx rwx rwt — 7+1=owner+group+other(含t)
 
 # ============================================================
-# 5. 设置 agent 工作目录
+# 5. Set agent working directories
 # ============================================================
+chown 1000:1000 /var/log/sandbox/vtrm 2>/dev/null || true
+chmod 755 /var/log/sandbox/vtrm 2>/dev/null || true
+chown 1000:1000 /var/lib/agentos 2>/dev/null || true
+chmod 755 /var/lib/agentos 2>/dev/null || true
+chown -R 1000:1000 /var/lib/agentos/approvals 2>/dev/null || true
+chmod 755 /var/lib/agentos/approvals 2>/dev/null || true
+chmod 755 /var/lib/agentos/approvals/pending 2>/dev/null || true
+chmod 755 /var/lib/agentos/approvals/approved 2>/dev/null || true
+chmod 755 /var/lib/agentos/approvals/used 2>/dev/null || true
+chmod 755 /var/lib/agentos/approvals/tokens 2>/dev/null || true
+if [ -e /var/lib/agentos/agent.db ]; then
+    chown 1000:1000 /var/lib/agentos/agent.db 2>/dev/null || true
+    chmod 600 /var/lib/agentos/agent.db 2>/dev/null || true
+fi
+
 mkdir -p /home/agent

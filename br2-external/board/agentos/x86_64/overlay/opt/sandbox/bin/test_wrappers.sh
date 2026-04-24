@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# test_wrappers.sh - 测试所有 AgentOS wrapper 脚本
+# test_wrappers.sh - Test all AgentOS wrapper scripts
 #
 
 WRAPPER_DIR="/opt/sandbox/bin"

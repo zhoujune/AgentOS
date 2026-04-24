@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# log_wrapper.sh - AgentOS 日志查看包装器
+# log_wrapper.sh - AgentOS log viewer wrapper
 #
 
 TRACE_DIR="${TRACE_DIR:-/var/log/sandbox/trace}"
@@ -186,13 +186,13 @@ usage() {
     echo ""
     echo "Commands:"
     echo "  tail <file> [lines]      - Show last lines"
-    echo "  head <file> [lines]      - Show first lines"
+    echo "  head <file> [lines]     - Show first lines"
     echo "  grep <pat> <file>       - Search pattern"
-    echo "  errors <file>           - Show errors/warnings"
-    echo "  timestamps <file> [pat]  - Show log entries by time"
+    echo "  errors <file>            - Show errors/warnings"
+    echo "  timestamps <file> [pat] - Show log entries by time"
     echo "  journal <svc> [lines]   - Systemd journal"
     echo "  watch <file> [pattern]  - Watch file live"
-    echo "  follow <file>           - Follow file (tail -f)"
+    echo "  follow <file>          - Follow file (tail -f)"
     echo "  list                    - List available logs"
     echo ""
     echo "Examples:"

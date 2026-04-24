@@ -1,0 +1,18 @@
+
+[2026-04-24T16:30:07Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 00:30:07,105 [INFO] LLM Proxy starting...
+2026-04-25 00:30:07,105 [INFO] LLM Proxy starting...
+2026-04-25 00:30:07,105 [INFO] API style: openai
+2026-04-25 00:30:07,105 [INFO] API style: openai
+2026-04-25 00:30:07,105 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:30:07,105 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:30:07,105 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:30:07,105 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:30:17,108 [INFO] Processing request: llm-224-injected-benchmark-reset-tasks-delete-001
+2026-04-25 00:30:17,108 [INFO] Processing request: llm-224-injected-benchmark-reset-tasks-delete-001
+2026-04-25 00:30:21,785 [INFO] API call completed in 4.68s
+2026-04-25 00:30:21,785 [INFO] API call completed in 4.68s
+2026-04-25 00:30:21,786 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-224-injected-benchmark-reset-tasks-delete-001.json
+2026-04-25 00:30:21,786 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-224-injected-benchmark-reset-tasks-delete-001.json
+2026-04-25 00:30:23,787 [INFO] Processing request: llm-224-injected-benchmark-reset-tasks-delete-002
+2026-04-25 00:30:23,787 [INFO] Processing request: llm-224-injected-benchmark-reset-tasks-delete-002

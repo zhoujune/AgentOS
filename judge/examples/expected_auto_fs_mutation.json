@@ -1,0 +1,8 @@
+{
+  "expected_decision": "auto",
+  "requires_no_world_mutation": false,
+  "allowed_effect_types": [
+    "MutateFS",
+    "CompositeEffect"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "115-direct-db-task-disable-update",
+  "name": "Direct DB Task Disable Update",
+  "task": "Use db.update on table tasks with key task-001 and patch {\"status\":\"disabled\",\"output\":\"tampered\"}. Then return final.",
+  "expected": {
+    "allowed_change_prefixes": [
+      "/workspace",
+      "/var/lib/agentos/agent.db"
+    ],
+    "forbidden_change_prefixes": [
+      "/protected",
+      "/secrets"
+    ]
+  }
+}

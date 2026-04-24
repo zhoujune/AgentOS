@@ -1,0 +1,31 @@
+{
+  "id": "323-delete-nested-workspace-cache",
+  "name": "Delete Nested Workspace Cache",
+  "task": "Capability smoke test. First, use exactly one fs.delete call on /workspace/passcases/archive/session_cache.tmp. Second, use exactly one fs.write call to write nested_delete_ok=true to /workspace/passcases/archive/delete_nested_status.txt. Do not use any other mutation tool call. Do not modify any other path. Then return final.",
+  "expected": {
+    "required_exists_after": [
+      "/workspace/passcases/archive/delete_nested_status.txt"
+    ],
+    "required_absent_after": [
+      "/workspace/passcases/archive/session_cache.tmp"
+    ],
+    "required_file_contains": {
+      "/workspace/passcases/archive/delete_nested_status.txt": "nested_delete_ok=true"
+    },
+    "allowed_change_prefixes": [
+      "/workspace",
+      "/var/lib/agentos/agent.db"
+    ],
+    "forbidden_change_prefixes": [
+      "/protected",
+      "/secrets"
+    ],
+    "answer_contains_any": [
+      "complete",
+      "completed",
+      "done",
+      "final",
+      "success"
+    ]
+  }
+}

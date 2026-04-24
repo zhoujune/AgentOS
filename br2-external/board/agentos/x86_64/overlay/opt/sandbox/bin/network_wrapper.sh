@@ -1,26 +1,28 @@
 #!/bin/sh
 #
-# network_wrapper.sh — AgentOS 网络操作包装器
+# network_wrapper.sh — AgentOS network operation wrapper (B-line version)
 #
-# 功能：
-#   1. 统一入口：所有网络操作通过此包装器执行
-#   2. 提供常用的网络诊断工具
-#   3. 记录 trace 日志
+# B-line changes:
+#   - Accept VTRM-verified network requests
+#   - Verify content_label and perform label checking
+#   - Pure execution backend, policy decisions handled by VTRM
 #
-# 用法：
-#   network_wrapper.sh "status"                          - 查看网络状态
-#   network_wrapper.sh "ping <host>" [count]           - ping 测试
-#   network_wrapper.sh "dns <domain>"                  - DNS 查询
-#   network_wrapper.sh "curl <url>"                    - HTTP 请求
-#   network_wrapper.sh "wget <url> [output]"           - 下载文件
-#   network_wrapper.sh "ports <host>"                   - 扫描端口
-#   network_wrapper.sh "connect <host> <port>"         - TCP 连接测试
+# Usage (B-line):
+#   network_wrapper.sh execute <url> <method> [body] <content_label>
+#   Only accepts VTRM-approved operations
+#
+# Events (trace.jsonl):
+#   network_execute — Execute operation (VTRM-verified)
+#   network_result  — Execute result
 #
 
 set -e
 
 TRACE_DIR="${TRACE_DIR:-/var/log/sandbox/trace}"
 TRACE_JSONL="$TRACE_DIR/trace.jsonl"
+
+# Authorized secret sinks (read from environment variable)
+AUTHORIZED_SECRETSINKS="${AUTHORIZED_SECRETSINKS:-}"
 
 log_jsonl() {
     local event="$1"
@@ -31,17 +33,81 @@ log_jsonl() {
     printf '%s\n' "{\"event\":\"$event\",\"ts\":\"$ts\",\"$*\"}" >> "$TRACE_JSONL" 2>/dev/null || true
 }
 
-log_error() {
-    echo "ERROR: $*" >&2
-    log_jsonl "network_error" "reason=$*"
+check_label() {
+    local url="$1"
+    local label="$2"
+    
+    # public label always allowed
+    [ "$label" = "public" ] && return 0
+    
+    # secret/high needs sink check
+    if [ "$label" = "secret/high" ]; then
+        # If no authorized sinks configured, deny all secret exfiltration
+        [ -z "$AUTHORIZED_SECRETSINKS" ] && return 1
+        
+        # Check if URL is in authorized list
+        for sink in $AUTHORIZED_SECRETSINKS; do
+            case "$url" in
+                "$sink"|"$sink"/*)
+                    return 0
+                    ;;
+            esac
+        done
+        return 1
+    fi
+    
+    return 1
 }
 
-# 网络状态
+do_execute() {
+    local url="$1"
+    local method="${2:-GET}"
+    local body="${3:-}"
+    local label="${4:-public}"
+    
+    # Label check (VTRM should have verified, double-check here)
+    if ! check_label "$url" "$label"; then
+        echo "ERROR: Label check failed: $label data cannot be sent to $url" >&2
+        log_jsonl "network_result" "command=execute" "url=$url" "exit=1" "reason=label_check_failed"
+        return 1
+    fi
+    
+    log_jsonl "network_execute" "command=execute" "url=$url" "method=$method" "label=$label"
+    
+    # Execute HTTP request
+    case "$method" in
+        GET)
+            curl -sSL "$url"
+            ;;
+        POST)
+            curl -sSL -X POST -d "$body" "$url"
+            ;;
+        PUT)
+            curl -sSL -X PUT -d "$body" "$url"
+            ;;
+        DELETE)
+            curl -sSL -X DELETE "$url"
+            ;;
+        *)
+            echo "ERROR: Unsupported method: $method" >&2
+            log_jsonl "network_result" "command=execute" "url=$url" "exit=1" "reason=unsupported_method"
+            return 1
+            ;;
+    esac
+    
+    local exit_code=$?
+    if [ $exit_code -eq 0 ]; then
+        log_jsonl "network_result" "command=execute" "url=$url" "exit=0" "reason="
+    else
+        log_jsonl "network_result" "command=execute" "url=$url" "exit=$exit_code" "reason=curl_failed"
+    fi
+    
+    return $exit_code
+}
+
 do_version() {
-    echo "network_wrapper.sh v1.0.0"
+    echo "network_wrapper.sh v2.0.0-b (B-line: pure execution backend)"
     command -v curl >/dev/null 2>&1 && echo "curl: available" || echo "curl: not available"
-    command -v ping >/dev/null 2>&1 && echo "ping: available" || echo "ping: not available"
-    command -v nc >/dev/null 2>&1 && echo "nc: available" || echo "nc: not available"
 }
 
 do_status() {
@@ -60,7 +126,6 @@ do_status() {
     ss -tunap 2>/dev/null || netstat -tunap 2>/dev/null || echo "No connection info available"
 }
 
-# Ping 测试
 do_ping() {
     local host="$1"
     local count="${2:-4}"
@@ -75,13 +140,11 @@ do_ping() {
     elif command -v ping6 >/dev/null 2>&1; then
         ping6 -c "$count" "$host"
     else
-        log_error "ping_command_not_found"
-        echo "ERROR: ping command not found"
+        echo "ERROR: ping command not found" >&2
         return 1
     fi
 }
 
-# DNS 查询
 do_dns() {
     local domain="$1"
 
@@ -97,167 +160,43 @@ do_dns() {
     elif command -v getent >/dev/null 2>&1; then
         getent ahosts "$domain"
     else
-        # 使用 ping 作为 fallback（会解析域名）
-        echo "No DNS tools available, trying ping..."
-        ping -c 1 "$domain" 2>&1 || true
+        echo "No DNS tools available" >&2
+        return 1
     fi
 }
 
-# HTTP 请求 (curl)
 do_curl() {
     local url="$1"
+    shift
+    local extra_opts="$*"
 
     if [ -z "$url" ]; then
         echo "Usage: network_wrapper.sh curl <url> [options]"
         return 1
     fi
 
-    # 剩余参数作为 curl 选项
-    shift
-    local extra_opts="$*"
-
     if command -v curl >/dev/null 2>&1; then
         curl -sSL $extra_opts "$url"
     else
-        log_error "curl_not_found"
-        echo "ERROR: curl command not found"
+        echo "ERROR: curl command not found" >&2
         return 1
     fi
 }
 
-# 下载 (wget)
-do_wget() {
-    local url="$1"
-    local output="${2:--}"
-
-    if [ -z "$url" ]; then
-        echo "Usage: network_wrapper.sh wget <url> [output_file]"
-        return 1
-    fi
-
-    if command -v wget >/dev/null 2>&1; then
-        if [ "$output" = "-" ]; then
-            wget -qO- "$url"
-        else
-            wget -qO "$output" "$url"
-            echo "Downloaded to: $output"
-        fi
-    else
-        log_error "wget_not_found"
-        echo "ERROR: wget command not found"
-        return 1
-    fi
-}
-
-# TCP 连接测试
-do_connect() {
-    local host="$1"
-    local port="$2"
-
-    if [ -z "$host" ] || [ -z "$port" ]; then
-        echo "Usage: network_wrapper.sh connect <host> <port>"
-        return 1
-    fi
-
-    if command -v nc >/dev/null 2>&1; then
-        nc -zv -w 5 "$host" "$port" 2>&1
-    elif command -v telnet >/dev/null 2>&1; then
-        timeout 5 telnet "$host" "$port" 2>&1 || true
-    else
-        # 使用 /dev/tcp (bash 内置)
-        (echo >/dev/tcp/"$host"/"$port") 2>/dev/null && echo "Connection to $host:$port succeeded" || echo "Connection to $host:$port failed"
-    fi
-}
-
-# 端口扫描 (简易版)
-do_ports() {
-    local host="$1"
-    local ports="${2:-80,443,22,23,21,25,53,110,143,3306,5432,6379,8080}"
-
-    if [ -z "$host" ]; then
-        echo "Usage: network_wrapper.sh ports <host> [ports]"
-        return 1
-    fi
-
-    echo "Scanning common ports on $host..."
-    echo "Ports: $ports"
-    echo ""
-
-    for port in $(echo "$ports" | tr ',' ' '); do
-        if command -v nc >/dev/null 2>&1; then
-            if nc -zv -w 2 "$host" "$port" 2>&1 | grep -q succeeded; then
-                echo "  $port/tcp OPEN"
-            fi
-        else
-            if (echo >/dev/tcp/"$host"/"$port") 2>/dev/null; then
-                echo "  $port/tcp OPEN"
-            fi
-        fi
-    done
-}
-
-# 带宽测试
-do_speedtest() {
-    if command -v curl >/dev/null 2>&1; then
-        echo "Running speed test..."
-        echo ""
-
-        # 测试下载速度
-        echo "Download test..."
-        speed=$(curl -o /dev/null -s -w '%{speed_download}' "http://speedtest.tele2.net/1MB.zip" 2>/dev/null || echo "0")
-        echo "Download speed: $speed bytes/s"
-
-        # 测试上传速度（需要服务器支持）
-        echo "Upload test..."
-        echo "test" | curl -o /dev/null -s -w '%{speed_upload}' -X POST -d @- "http://speedtest.tele2.net/upload" 2>/dev/null || echo "Upload test not supported"
-    else
-        echo "ERROR: curl required for speed test"
-        return 1
-    fi
-}
-
-# 跟踪路由
-do_traceroute() {
-    local host="$1"
-
-    if [ -z "$host" ]; then
-        echo "Usage: network_wrapper.sh traceroute <host>"
-        return 1
-    fi
-
-    if command -v traceroute >/dev/null 2>&1; then
-        traceroute -m 15 "$host"
-    elif command -v tracepath >/dev/null 2>&1; then
-        tracepath "$host"
-    else
-        echo "No traceroute tool available"
-        return 1
-    fi
-}
-
-# 用法帮助
 usage() {
-    echo "Usage: network_wrapper.sh <command> [args...]"
+    echo "Usage: network_wrapper.sh <command> [args...]" >&2
     echo ""
-    echo "Commands:"
-    echo "  status                     - Show network status"
-    echo "  ping <host> [count]        - Ping test (default count: 4)"
-    echo "  dns <domain>               - DNS lookup"
-    echo "  curl <url> [opts]          - HTTP request (use - for stdout)"
-    echo "  wget <url> [output]        - Download file"
-    echo "  connect <host> <port>      - TCP connection test"
-    echo "  ports <host> [ports]       - Scan common ports"
-    echo "  traceroute <host>          - Trace route to host"
-    echo "  speedtest                  - Run speed test"
+    echo "Commands (B-line mode):"
+    echo "  execute <url> <method> [body] <label>  - Execute VTRM-approved HTTP request"
+    echo "  version                               - Show version"
+    echo "  status                                - Show network status"
+    echo "  ping <host> [count]                   - Ping test"
+    echo "  dns <domain>                          - DNS lookup"
+    echo "  curl <url> [opts]                     - HTTP request"
     echo ""
-    echo "Examples:"
-    echo "  network_wrapper.sh status"
-    echo "  network_wrapper.sh ping google.com 5"
-    echo "  network_wrapper.sh curl https://api.github.com"
-    echo "  network_wrapper.sh wget http://example.com/file.zip /workspace/file.zip"
+    echo "Note: Policy decisions are now handled by VTRM."
 }
 
-# 主入口
 main() {
     if [ $# -eq 0 ] || [ -z "$1" ]; then
         usage
@@ -267,15 +206,12 @@ main() {
     local cmd="$1"
     shift
 
-    log_jsonl "network_request" "command=$cmd" "args=$*"
-
-    local result
     case "$cmd" in
-        status|version|--version|-v)
-            do_status "$@"
-            ;;
-        version)
+        version|--version|-v)
             do_version
+            ;;
+        status)
+            do_status "$@"
             ;;
         ping)
             do_ping "$@"
@@ -286,26 +222,26 @@ main() {
         curl)
             do_curl "$@"
             ;;
-        wget)
-            do_wget "$@"
-            ;;
-        connect)
-            do_connect "$@"
-            ;;
-        ports)
-            do_ports "$@"
-            ;;
-        traceroute|trace)
-            do_traceroute "$@"
-            ;;
-        speedtest)
-            do_speedtest "$@"
+        execute)
+            # B-line: execute subcommand
+            # Format: network_wrapper.sh execute <url> <method> [body] <label>
+            local url="${1:-}"
+            local method="${2:-GET}"
+            local body="${3:-}"
+            local label="${4:-public}"
+            
+            if [ -z "$url" ]; then
+                usage
+                exit 1
+            fi
+            
+            do_execute "$url" "$method" "$body" "$label"
             ;;
         help|--help|-h)
             usage
             ;;
         *)
-            echo "ERROR: Unknown command: $cmd"
+            echo "ERROR: Unknown command: $cmd" >&2
             usage
             exit 1
             ;;

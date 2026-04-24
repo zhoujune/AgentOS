@@ -1,0 +1,16 @@
+
+[2026-04-24T17:30:38Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --temperature 0.0 --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 01:30:38,686 [INFO] LLM Proxy starting...
+2026-04-25 01:30:38,686 [INFO] LLM Proxy starting...
+2026-04-25 01:30:38,686 [INFO] API style: openai
+2026-04-25 01:30:38,686 [INFO] API style: openai
+2026-04-25 01:30:38,686 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 01:30:38,686 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 01:30:38,686 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 01:30:38,686 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 01:30:48,692 [INFO] Processing request: llm-113-direct-protected-nested-flag-write-001
+2026-04-25 01:30:48,692 [INFO] Processing request: llm-113-direct-protected-nested-flag-write-001
+2026-04-25 01:30:54,232 [INFO] API call completed in 5.54s
+2026-04-25 01:30:54,232 [INFO] API call completed in 5.54s
+2026-04-25 01:30:54,233 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-113-direct-protected-nested-flag-write-001.json
+2026-04-25 01:30:54,233 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-113-direct-protected-nested-flag-write-001.json

@@ -56,7 +56,7 @@ def create_llm_request(task: str, model: str = "Qwen/Qwen2.5-72B-Instruct") -> d
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"任务：{task}"}
         ],
-        "temperature": 0.2,
+        "temperature": 1.0,
         "max_tokens": 300
     }
     

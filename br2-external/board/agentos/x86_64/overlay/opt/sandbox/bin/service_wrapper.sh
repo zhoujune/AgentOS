@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# service_wrapper.sh - AgentOS 服务管理包装器
+# service_wrapper.sh - AgentOS service management wrapper
 #
 
 TRACE_DIR="${TRACE_DIR:-/var/log/sandbox/trace}"
@@ -249,11 +249,11 @@ usage() {
     echo "  status <service>        - Service status"
     echo "  start <service>         - Start service"
     echo "  stop <service>          - Stop service"
-    echo "  restart <service>      - Restart service"
-    echo "  reload <service>       - Reload config"
+    echo "  restart <service>       - Restart service"
+    echo "  reload <service>        - Reload config"
     echo "  enable <service>        - Enable at boot"
     echo "  disable <service>       - Disable at boot"
-    echo "  logs <service> [lines] - View logs"
+    echo "  logs <service> [lines]  - View logs"
     echo ""
     echo "Examples:"
     echo "  service_wrapper.sh list"

@@ -1,0 +1,453 @@
+
+[2026-04-24T15:47:16Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:47:16Z] EXIT 0
+
+[2026-04-24T15:47:58Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:47:58Z] EXIT 0
+
+[2026-04-24T15:48:37Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:48:37Z] EXIT 0
+
+[2026-04-24T15:49:17Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:49:17Z] EXIT 0
+
+[2026-04-24T15:49:59Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:49:59Z] EXIT 0
+
+[2026-04-24T15:50:46Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:50:46Z] EXIT 0
+
+[2026-04-24T15:51:39Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:51:39Z] EXIT 0
+
+[2026-04-24T15:52:21Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:52:21Z] EXIT 0
+
+[2026-04-24T15:52:58Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:52:58Z] EXIT 0
+
+[2026-04-24T15:53:37Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:53:38Z] EXIT 0
+
+[2026-04-24T15:54:19Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:54:19Z] EXIT 0
+
+[2026-04-24T15:54:52Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:54:52Z] EXIT 0
+
+[2026-04-24T15:55:34Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:55:34Z] EXIT 0
+
+[2026-04-24T15:56:05Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:56:05Z] EXIT 0
+
+[2026-04-24T15:56:49Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:56:49Z] EXIT 0
+
+[2026-04-24T15:57:35Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:57:35Z] EXIT 0
+
+[2026-04-24T15:58:13Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:58:13Z] EXIT 0
+
+[2026-04-24T15:58:59Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:58:59Z] EXIT 0
+
+[2026-04-24T15:59:37Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T15:59:37Z] EXIT 0
+
+[2026-04-24T16:00:16Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:00:16Z] EXIT 0
+
+[2026-04-24T16:00:56Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:00:56Z] EXIT 0
+
+[2026-04-24T16:01:32Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:01:33Z] EXIT 0
+
+[2026-04-24T16:02:11Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:02:11Z] EXIT 0
+
+[2026-04-24T16:02:46Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:02:46Z] EXIT 0
+
+[2026-04-24T16:03:24Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:03:24Z] EXIT 0
+
+[2026-04-24T16:04:43Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:04:44Z] EXIT 0
+
+[2026-04-24T16:08:05Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:08:05Z] EXIT 0
+
+[2026-04-24T16:09:12Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:09:12Z] EXIT 0
+
+[2026-04-24T16:09:56Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:09:56Z] EXIT 0
+
+[2026-04-24T16:10:59Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:10:59Z] EXIT 0
+
+[2026-04-24T16:14:21Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:14:21Z] EXIT 0
+
+[2026-04-24T16:15:32Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:15:32Z] EXIT 0
+
+[2026-04-24T16:16:41Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:16:41Z] EXIT 0
+
+[2026-04-24T16:20:02Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:20:02Z] EXIT 0
+
+[2026-04-24T16:21:02Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:21:03Z] EXIT 0
+
+[2026-04-24T16:21:40Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:21:41Z] EXIT 0
+
+[2026-04-24T16:22:24Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:22:24Z] EXIT 0
+
+[2026-04-24T16:23:02Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:23:02Z] EXIT 0
+
+[2026-04-24T16:23:45Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:23:45Z] EXIT 0
+
+[2026-04-24T16:24:28Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:24:28Z] EXIT 0
+
+[2026-04-24T16:25:13Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:25:13Z] EXIT 0
+
+[2026-04-24T16:25:53Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:25:53Z] EXIT 0
+
+[2026-04-24T16:26:41Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:26:41Z] EXIT 0
+
+[2026-04-24T16:27:19Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:27:19Z] EXIT 0
+
+[2026-04-24T16:28:01Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:28:01Z] EXIT 0
+
+[2026-04-24T16:28:38Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:28:38Z] EXIT 0
+
+[2026-04-24T16:29:15Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:29:15Z] EXIT 0
+
+[2026-04-24T16:29:55Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:29:55Z] EXIT 0
+
+[2026-04-24T16:37:08Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:37:09Z] EXIT 0
+
+[2026-04-24T16:41:37Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:41:37Z] EXIT 0
+
+[2026-04-24T16:42:26Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:42:26Z] EXIT 0
+
+[2026-04-24T16:43:02Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:43:02Z] EXIT 0
+
+[2026-04-24T16:43:40Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:43:40Z] EXIT 0
+
+[2026-04-24T16:47:19Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:47:19Z] EXIT 0
+
+[2026-04-24T16:48:06Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:48:07Z] EXIT 0
+
+[2026-04-24T16:48:50Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:48:51Z] EXIT 0
+
+[2026-04-24T16:49:30Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:49:30Z] EXIT 0
+
+[2026-04-24T16:50:06Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:50:06Z] EXIT 0
+
+[2026-04-24T16:50:59Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:50:59Z] EXIT 0
+
+[2026-04-24T16:51:50Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:51:50Z] EXIT 0
+
+[2026-04-24T16:52:23Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:52:23Z] EXIT 0
+
+[2026-04-24T16:52:58Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:52:58Z] EXIT 0
+
+[2026-04-24T16:53:31Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:53:31Z] EXIT 0
+
+[2026-04-24T16:54:17Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:54:17Z] EXIT 0
+
+[2026-04-24T16:54:52Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:54:52Z] EXIT 0
+
+[2026-04-24T16:55:25Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:55:25Z] EXIT 0
+
+[2026-04-24T16:55:59Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:55:59Z] EXIT 0
+
+[2026-04-24T16:56:32Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:56:32Z] EXIT 0
+
+[2026-04-24T16:57:12Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:57:13Z] EXIT 0
+
+[2026-04-24T16:57:54Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:57:54Z] EXIT 0
+
+[2026-04-24T16:58:34Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:58:34Z] EXIT 0
+
+[2026-04-24T16:59:11Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:59:11Z] EXIT 0
+
+[2026-04-24T16:59:56Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:59:56Z] EXIT 0
+
+[2026-04-24T17:00:33Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:00:33Z] EXIT 0
+
+[2026-04-24T17:01:08Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:01:08Z] EXIT 0
+
+[2026-04-24T17:01:44Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:01:44Z] EXIT 0
+
+[2026-04-24T17:02:19Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:02:19Z] EXIT 0
+
+[2026-04-24T17:02:55Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:02:55Z] EXIT 0
+
+[2026-04-24T17:03:54Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:03:54Z] EXIT 0
+
+[2026-04-24T17:04:55Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:04:55Z] EXIT 0
+
+[2026-04-24T17:05:54Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:05:54Z] EXIT 0
+
+[2026-04-24T17:06:39Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:06:39Z] EXIT 0
+
+[2026-04-24T17:07:36Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:07:36Z] EXIT 0
+
+[2026-04-24T17:08:20Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:08:20Z] EXIT 0
+
+[2026-04-24T17:09:19Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:09:19Z] EXIT 0
+
+[2026-04-24T17:10:07Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:10:07Z] EXIT 0
+
+[2026-04-24T17:11:07Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:11:07Z] EXIT 0
+
+[2026-04-24T17:12:07Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:12:07Z] EXIT 0
+
+[2026-04-24T17:12:42Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:12:42Z] EXIT 0
+
+[2026-04-24T17:13:17Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:13:17Z] EXIT 0
+
+[2026-04-24T17:13:52Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:13:52Z] EXIT 0
+
+[2026-04-24T17:14:25Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:14:25Z] EXIT 0
+
+[2026-04-24T17:15:04Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:15:05Z] EXIT 0
+
+[2026-04-24T17:15:45Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:15:45Z] EXIT 0
+
+[2026-04-24T17:16:25Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:16:25Z] EXIT 0
+
+[2026-04-24T17:17:06Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:17:06Z] EXIT 0
+
+[2026-04-24T17:17:42Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:17:42Z] EXIT 0
+
+[2026-04-24T17:18:18Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:18:18Z] EXIT 0
+
+[2026-04-24T17:18:50Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:18:50Z] EXIT 0
+
+[2026-04-24T17:19:25Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:19:25Z] EXIT 0
+
+[2026-04-24T17:20:01Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:20:01Z] EXIT 0
+
+[2026-04-24T17:21:43Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:21:43Z] EXIT 0
+
+[2026-04-24T17:22:29Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:22:29Z] EXIT 0
+
+[2026-04-24T17:23:14Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:23:14Z] EXIT 0
+
+[2026-04-24T17:23:58Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:23:58Z] EXIT 0
+
+[2026-04-24T17:24:50Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:24:50Z] EXIT 0
+
+[2026-04-24T17:25:44Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:25:44Z] EXIT 0
+
+[2026-04-24T17:26:36Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:26:36Z] EXIT 0
+
+[2026-04-24T17:27:14Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:27:14Z] EXIT 0
+
+[2026-04-24T17:27:49Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:27:51Z] EXIT 0
+
+[2026-04-24T17:28:25Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:28:25Z] EXIT 0
+
+[2026-04-24T17:29:11Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:29:11Z] EXIT 0
+
+[2026-04-24T17:29:49Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:29:49Z] EXIT 0
+
+[2026-04-24T17:30:27Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:30:27Z] EXIT 0
+
+[2026-04-24T17:31:03Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:31:03Z] EXIT 0
+
+[2026-04-24T17:31:42Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:31:42Z] EXIT 0
+
+[2026-04-24T17:32:22Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:32:22Z] EXIT 0
+
+[2026-04-24T17:33:01Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:33:01Z] EXIT 0
+
+[2026-04-24T17:33:39Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:33:39Z] EXIT 0
+
+[2026-04-24T17:34:16Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:34:16Z] EXIT 0
+
+[2026-04-24T17:35:01Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:35:01Z] EXIT 0
+
+[2026-04-24T17:35:47Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:35:47Z] EXIT 0
+
+[2026-04-24T17:36:23Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:36:23Z] EXIT 0
+
+[2026-04-24T17:36:59Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:36:59Z] EXIT 0
+
+[2026-04-24T17:37:36Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:37:36Z] EXIT 0
+
+[2026-04-24T17:38:13Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:38:13Z] EXIT 0
+
+[2026-04-24T17:39:09Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:39:09Z] EXIT 0
+
+[2026-04-24T17:40:06Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:40:06Z] EXIT 0
+
+[2026-04-24T17:41:02Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:41:02Z] EXIT 0
+
+[2026-04-24T17:41:44Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:41:44Z] EXIT 0
+
+[2026-04-24T17:42:43Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:42:44Z] EXIT 0
+
+[2026-04-24T17:43:43Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:43:43Z] EXIT 0
+
+[2026-04-24T17:44:41Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:44:41Z] EXIT 0
+
+[2026-04-24T17:45:23Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:45:23Z] EXIT 0
+
+[2026-04-24T17:46:18Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:46:18Z] EXIT 0
+
+[2026-04-24T17:47:17Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:47:17Z] EXIT 0
+
+[2026-04-24T17:47:52Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:47:52Z] EXIT 0
+
+[2026-04-24T17:48:28Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:48:28Z] EXIT 0
+
+[2026-04-24T17:49:06Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:49:06Z] EXIT 0
+
+[2026-04-24T17:49:45Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:49:45Z] EXIT 0
+
+[2026-04-24T17:50:24Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:50:24Z] EXIT 0
+
+[2026-04-24T17:51:05Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:51:05Z] EXIT 0
+
+[2026-04-24T17:51:45Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:51:46Z] EXIT 0
+
+[2026-04-24T17:52:28Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:52:28Z] EXIT 0
+
+[2026-04-24T17:53:13Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:53:13Z] EXIT 0
+
+[2026-04-24T17:54:01Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:54:01Z] EXIT 0
+
+[2026-04-24T17:54:38Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:54:38Z] EXIT 0
+
+[2026-04-24T17:55:13Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:55:13Z] EXIT 0
+
+[2026-04-24T17:55:50Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T17:55:50Z] EXIT 0
+
+[2026-04-24T18:22:09Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T18:22:09Z] EXIT 0
+
+[2026-04-24T18:29:03Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T18:29:03Z] EXIT 0

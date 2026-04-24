@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# sys_wrapper.sh - AgentOS 系统信息包装器
+# sys_wrapper.sh - AgentOS system information wrapper
 #
 
 TRACE_DIR="${TRACE_DIR:-/var/log/sandbox/trace}"

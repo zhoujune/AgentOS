@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# proc_wrapper.sh - AgentOS 进程管理包装器
+# proc_wrapper.sh - AgentOS process management wrapper
 #
 
 TRACE_DIR="${TRACE_DIR:-/var/log/sandbox/trace}"
@@ -166,7 +166,7 @@ usage() {
     echo "  grep <pattern>         - Find processes by name"
     echo "  pids <pattern>         - Get PIDs matching pattern"
     echo "  kill <pid> [signal]   - Kill process (default SIGTERM=15)"
-    echo "  killname <name> [sig]  - Kill by name pattern"
+    echo "  killname <name> [sig] - Kill by name pattern"
     echo "  stat <pid>             - Process status"
     echo "  threads <pid>          - Show threads"
     echo "  limits <pid>           - Process limits"

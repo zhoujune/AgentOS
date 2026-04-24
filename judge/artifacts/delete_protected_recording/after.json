@@ -1,0 +1,29 @@
+{
+  "collectors": [
+    {
+      "entries": [
+        {
+          "exists": true,
+          "kind": "dir",
+          "mode": "0755",
+          "mtime_ns": 1776530437788048126,
+          "path": "/home/june/AgentOS/agentos/judge/artifacts/delete_protected_recording/sandbox",
+          "size": 4096
+        },
+        {
+          "exists": true,
+          "kind": "dir",
+          "mode": "0755",
+          "mtime_ns": 1776530437807839821,
+          "path": "/home/june/AgentOS/agentos/judge/artifacts/delete_protected_recording/sandbox/protected",
+          "size": 4096
+        }
+      ],
+      "name": "sandbox-fs",
+      "type": "filesystem"
+    }
+  ],
+  "name": "delete-protected-selftest",
+  "schema_version": "0.1",
+  "timestamp": 1776530437.815299
+}

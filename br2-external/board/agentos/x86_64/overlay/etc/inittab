@@ -1,41 +1,42 @@
 # ============================================================
-# BusyBox init 执行顺序（manul.md §6.3 引用 BusyBox inittab 语法）：
-#   1. sysinit 动作依次执行，init 等待每个完成
-#   2. wait 动作依次执行，init 等待每个完成
-#   3. once 动作执行，不等待
-#   4. askfirst / respawn 动作执行
+# BusyBox init execution order (manual.md §6.3, BusyBox inittab syntax reference):
+#   1. sysinit actions execute in sequence, init waits for each to complete
+#   2. wait actions execute in sequence, init waits for each to complete
+#   3. once actions execute, no waiting
+#   4. askfirst / respawn actions execute
 #
-# 注意：自定义 overlay 覆盖了 BusyBox 默认 inittab（/etc/inittab），
-#       因此必须手动补全 mount / remount / rcS 等必要初始化步骤。
+# Note: Custom overlay overrides BusyBox default inittab (/etc/inittab),
+#       therefore must manually complete mount / remount / rcS and other necessary initialization steps.
 # ============================================================
 
-# 将根文件系统重新挂载为读写（覆盖 BusyBox 默认 remount，
-# ext2 镜像默认以只读挂载，需要此步才能写入日志和创建目录）
+# Remount root filesystem as read-write (override BusyBox default remount,
+# ext2 image mounts read-only by default, this step needed to write logs and create directories)
 ::sysinit:/bin/mount -o remount,rw /
 
-# 挂载 9P virtfs（宿主机共享目录）
-# 如果挂载失败则继续启动（后续操作会感知到目录缺失）
+# Mount 9P virtfs (host shared directory)
+# If mount fails, continue startup (subsequent operations will detect missing directories)
 ::sysinit:/bin/mkdir -p /mnt/agent_bridge && /bin/mount -t 9p -o trans=virtio,cache=loose agent_bridge /mnt/agent_bridge || echo "[init] agent_bridge mount failed, continuing..."
 ::sysinit:/bin/mkdir -p /workspace && /bin/mount -t 9p -o trans=virtio,cache=loose workspace /workspace || echo "[init] workspace mount failed, continuing..."
 
-# 挂载 devpts 和 /dev/shm（Python/多线程程序需要共享内存）
+# Mount devpts and /dev/shm (needed by Python/multi-threaded programs for shared memory)
 ::sysinit:/bin/mount -t devpts devpts /dev/pts
 ::sysinit:/bin/mkdir -p /dev/shm && /bin/mount -t tmpfs tmpfs /dev/shm -o size=64M
 
-# 挂载 procfs（很多工具依赖 /proc/mounts）
+# Mount procfs (many tools depend on /proc/mounts)
 ::sysinit:/bin/mount -t proc proc /proc
 
-# 执行系统骨架的 rcS（BR2_ROOTFS_OVERLAY 不包含 system/skeleton/rcS）
+# Execute system skeleton rcS (BR2_ROOTFS_OVERLAY doesn't include system/skeleton/rcS)
 ::sysinit:/etc/init.d/rcS
 
-# 项目级启动脚本：创建运行时目录、初始化日志等
+# Project-level startup script: create runtime directories, initialize logs, etc.
 ::sysinit:/etc/init.d/rcS.local
 
-# 启动网络（自动 DHCP 或静态 IP）
+# Start network (auto DHCP or static IP)
 ::sysinit:/etc/init.d/S40network start
 
-# [调试模式已禁用] agent 主循环暂时注释，手动运行
+# [Debug mode disabled] agent main loop temporarily commented out, run manually
 # ::sysinit:/bin/nohup /bin/sh /home/agent/agent_main_loop.sh > /dev/null 2>&1 &
 
-# agent 的交互 shell（串口 ttyS0，用于手动调试）
+# Agent interactive shell (serial ttyS0, for manual debugging)
 ttyS0::respawn:/bin/sh /etc/autologin-agent.sh
+

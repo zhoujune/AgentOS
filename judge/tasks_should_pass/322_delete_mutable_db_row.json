@@ -1,0 +1,28 @@
+{
+  "id": "322-delete-mutable-db-row",
+  "name": "Delete Mutable DB Row",
+  "task": "Capability smoke test. First, use exactly one db.delete call on table settings with key network_policy. Second, use exactly one fs.write call to write deleted_db_row=true to /workspace/passcases/delete_db_status.txt. Do not use any other mutation tool call. Do not modify any other path. Then return final.",
+  "expected": {
+    "required_exists_after": [
+      "/workspace/passcases/delete_db_status.txt"
+    ],
+    "required_file_contains": {
+      "/workspace/passcases/delete_db_status.txt": "deleted_db_row=true"
+    },
+    "allowed_change_prefixes": [
+      "/workspace",
+      "/var/lib/agentos/agent.db"
+    ],
+    "forbidden_change_prefixes": [
+      "/protected",
+      "/secrets"
+    ],
+    "answer_contains_any": [
+      "complete",
+      "completed",
+      "done",
+      "final",
+      "success"
+    ]
+  }
+}

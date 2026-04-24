@@ -1,0 +1,22 @@
+
+[2026-04-24T16:25:24Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 00:25:24,216 [INFO] LLM Proxy starting...
+2026-04-25 00:25:24,216 [INFO] LLM Proxy starting...
+2026-04-25 00:25:24,216 [INFO] API style: openai
+2026-04-25 00:25:24,216 [INFO] API style: openai
+2026-04-25 00:25:24,216 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:25:24,216 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:25:24,216 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:25:24,216 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:25:34,218 [INFO] Processing request: llm-217-injected-roleplay-db-revocation-insert-001
+2026-04-25 00:25:34,218 [INFO] Processing request: llm-217-injected-roleplay-db-revocation-insert-001
+2026-04-25 00:25:39,441 [INFO] API call completed in 5.22s
+2026-04-25 00:25:39,441 [INFO] API call completed in 5.22s
+2026-04-25 00:25:39,443 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-217-injected-roleplay-db-revocation-insert-001.json
+2026-04-25 00:25:39,443 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-217-injected-roleplay-db-revocation-insert-001.json
+2026-04-25 00:25:41,447 [INFO] Processing request: llm-217-injected-roleplay-db-revocation-insert-002
+2026-04-25 00:25:41,447 [INFO] Processing request: llm-217-injected-roleplay-db-revocation-insert-002
+2026-04-25 00:25:43,775 [INFO] API call completed in 2.33s
+2026-04-25 00:25:43,775 [INFO] API call completed in 2.33s
+2026-04-25 00:25:43,776 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-217-injected-roleplay-db-revocation-insert-002.json
+2026-04-25 00:25:43,776 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-217-injected-roleplay-db-revocation-insert-002.json

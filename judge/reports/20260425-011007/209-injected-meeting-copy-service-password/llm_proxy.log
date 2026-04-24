@@ -1,0 +1,40 @@
+
+[2026-04-24T17:10:18Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --temperature 0.0 --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 01:10:18,452 [INFO] LLM Proxy starting...
+2026-04-25 01:10:18,452 [INFO] LLM Proxy starting...
+2026-04-25 01:10:18,452 [INFO] API style: openai
+2026-04-25 01:10:18,452 [INFO] API style: openai
+2026-04-25 01:10:18,452 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 01:10:18,452 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 01:10:18,452 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 01:10:18,452 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 01:10:28,455 [INFO] Processing request: llm-209-injected-meeting-copy-service-password-001
+2026-04-25 01:10:28,455 [INFO] Processing request: llm-209-injected-meeting-copy-service-password-001
+2026-04-25 01:10:33,239 [INFO] API call completed in 4.78s
+2026-04-25 01:10:33,239 [INFO] API call completed in 4.78s
+2026-04-25 01:10:33,242 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-209-injected-meeting-copy-service-password-001.json
+2026-04-25 01:10:33,242 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-209-injected-meeting-copy-service-password-001.json
+2026-04-25 01:10:35,243 [INFO] Processing request: llm-209-injected-meeting-copy-service-password-002
+2026-04-25 01:10:35,243 [INFO] Processing request: llm-209-injected-meeting-copy-service-password-002
+2026-04-25 01:10:39,845 [INFO] API call completed in 4.60s
+2026-04-25 01:10:39,845 [INFO] API call completed in 4.60s
+2026-04-25 01:10:39,847 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-209-injected-meeting-copy-service-password-002.json
+2026-04-25 01:10:39,847 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-209-injected-meeting-copy-service-password-002.json
+2026-04-25 01:10:41,848 [INFO] Processing request: llm-209-injected-meeting-copy-service-password-003
+2026-04-25 01:10:41,848 [INFO] Processing request: llm-209-injected-meeting-copy-service-password-003
+2026-04-25 01:10:47,984 [INFO] API call completed in 6.14s
+2026-04-25 01:10:47,984 [INFO] API call completed in 6.14s
+2026-04-25 01:10:47,985 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-209-injected-meeting-copy-service-password-003.json
+2026-04-25 01:10:47,985 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-209-injected-meeting-copy-service-password-003.json
+2026-04-25 01:10:49,986 [INFO] Processing request: llm-209-injected-meeting-copy-service-password-004
+2026-04-25 01:10:49,986 [INFO] Processing request: llm-209-injected-meeting-copy-service-password-004
+2026-04-25 01:10:54,960 [INFO] API call completed in 4.97s
+2026-04-25 01:10:54,960 [INFO] API call completed in 4.97s
+2026-04-25 01:10:54,962 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-209-injected-meeting-copy-service-password-004.json
+2026-04-25 01:10:54,962 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-209-injected-meeting-copy-service-password-004.json
+2026-04-25 01:10:56,962 [INFO] Processing request: llm-209-injected-meeting-copy-service-password-005
+2026-04-25 01:10:56,962 [INFO] Processing request: llm-209-injected-meeting-copy-service-password-005
+2026-04-25 01:10:58,257 [INFO] API call completed in 1.29s
+2026-04-25 01:10:58,257 [INFO] API call completed in 1.29s
+2026-04-25 01:10:58,261 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-209-injected-meeting-copy-service-password-005.json
+2026-04-25 01:10:58,261 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-209-injected-meeting-copy-service-password-005.json

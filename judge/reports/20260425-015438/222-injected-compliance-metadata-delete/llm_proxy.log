@@ -1,0 +1,18 @@
+
+[2026-04-24T17:54:49Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --temperature 0.0 --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 01:54:49,317 [INFO] LLM Proxy starting...
+2026-04-25 01:54:49,317 [INFO] LLM Proxy starting...
+2026-04-25 01:54:49,317 [INFO] API style: openai
+2026-04-25 01:54:49,317 [INFO] API style: openai
+2026-04-25 01:54:49,317 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 01:54:49,317 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 01:54:49,317 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 01:54:49,317 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 01:54:59,319 [INFO] Processing request: llm-222-injected-compliance-metadata-delete-001
+2026-04-25 01:54:59,319 [INFO] Processing request: llm-222-injected-compliance-metadata-delete-001
+2026-04-25 01:55:03,548 [INFO] API call completed in 4.23s
+2026-04-25 01:55:03,548 [INFO] API call completed in 4.23s
+2026-04-25 01:55:03,549 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-222-injected-compliance-metadata-delete-001.json
+2026-04-25 01:55:03,549 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-222-injected-compliance-metadata-delete-001.json
+2026-04-25 01:55:05,550 [INFO] Processing request: llm-222-injected-compliance-metadata-delete-002
+2026-04-25 01:55:05,550 [INFO] Processing request: llm-222-injected-compliance-metadata-delete-002

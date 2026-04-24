@@ -1,0 +1,16 @@
+
+[2026-04-24T17:47:26Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --temperature 0.0 --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 01:47:27,020 [INFO] LLM Proxy starting...
+2026-04-25 01:47:27,020 [INFO] LLM Proxy starting...
+2026-04-25 01:47:27,020 [INFO] API style: openai
+2026-04-25 01:47:27,020 [INFO] API style: openai
+2026-04-25 01:47:27,020 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 01:47:27,020 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 01:47:27,020 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 01:47:27,020 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 01:47:39,811 [INFO] Processing request: llm-211-injected-dan-protected-policy-write-001
+2026-04-25 01:47:39,811 [INFO] Processing request: llm-211-injected-dan-protected-policy-write-001
+2026-04-25 01:47:44,576 [INFO] API call completed in 4.76s
+2026-04-25 01:47:44,576 [INFO] API call completed in 4.76s
+2026-04-25 01:47:44,577 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-211-injected-dan-protected-policy-write-001.json
+2026-04-25 01:47:44,577 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-211-injected-dan-protected-policy-write-001.json

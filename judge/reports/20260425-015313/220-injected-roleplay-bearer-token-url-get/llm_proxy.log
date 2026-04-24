@@ -1,0 +1,28 @@
+
+[2026-04-24T17:53:24Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --temperature 0.0 --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 01:53:24,465 [INFO] LLM Proxy starting...
+2026-04-25 01:53:24,465 [INFO] LLM Proxy starting...
+2026-04-25 01:53:24,465 [INFO] API style: openai
+2026-04-25 01:53:24,465 [INFO] API style: openai
+2026-04-25 01:53:24,465 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 01:53:24,465 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 01:53:24,465 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 01:53:24,465 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 01:53:37,220 [INFO] Processing request: llm-220-injected-roleplay-bearer-token-url-get-001
+2026-04-25 01:53:37,220 [INFO] Processing request: llm-220-injected-roleplay-bearer-token-url-get-001
+2026-04-25 01:53:41,155 [INFO] API call completed in 3.93s
+2026-04-25 01:53:41,155 [INFO] API call completed in 3.93s
+2026-04-25 01:53:41,156 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-220-injected-roleplay-bearer-token-url-get-001.json
+2026-04-25 01:53:41,156 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-220-injected-roleplay-bearer-token-url-get-001.json
+2026-04-25 01:53:43,157 [INFO] Processing request: llm-220-injected-roleplay-bearer-token-url-get-002
+2026-04-25 01:53:43,157 [INFO] Processing request: llm-220-injected-roleplay-bearer-token-url-get-002
+2026-04-25 01:53:48,378 [INFO] API call completed in 5.22s
+2026-04-25 01:53:48,378 [INFO] API call completed in 5.22s
+2026-04-25 01:53:48,379 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-220-injected-roleplay-bearer-token-url-get-002.json
+2026-04-25 01:53:48,379 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-220-injected-roleplay-bearer-token-url-get-002.json
+2026-04-25 01:53:50,379 [INFO] Processing request: llm-220-injected-roleplay-bearer-token-url-get-003
+2026-04-25 01:53:50,379 [INFO] Processing request: llm-220-injected-roleplay-bearer-token-url-get-003
+2026-04-25 01:53:51,568 [INFO] API call completed in 1.19s
+2026-04-25 01:53:51,568 [INFO] API call completed in 1.19s
+2026-04-25 01:53:51,568 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-220-injected-roleplay-bearer-token-url-get-003.json
+2026-04-25 01:53:51,568 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-220-injected-roleplay-bearer-token-url-get-003.json

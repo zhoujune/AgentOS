@@ -1,20 +1,20 @@
 #!/bin/sh
 #
-# shell_wrapper.sh — AgentOS 命令执行包装器
+# shell_wrapper.sh — AgentOS command execution wrapper
 #
-# 功能：
-#   1. 统一入口：所有命令都通过此包装器执行
-#   2. 基础策略检查：拒绝明显危险的命令模式
-#   3. 调用 task-run.sh 执行实际任务
-#   4. 记录清晰的执行 trace
+# Functions:
+#   1. Unified entry: all commands go through this wrapper
+#   2. Basic policy check: reject obviously dangerous command patterns
+#   3. Call task-run.sh to execute actual tasks
+#   4. Record clear execution trace
 #
-# 用法：
+# Usage:
 #   shell_wrapper.sh "<command>"
-#   例: shell_wrapper.sh "rm -rf /workspace/temp"
+#   Example: shell_wrapper.sh "rm -rf /workspace/temp"
 #
-# 事件（trace.jsonl）：
-#   shell_request — 命令请求（带 decision: allow/deny）
-#   shell_result  — 命令结果（带 exit 退出码和 reason）
+# Events (trace.jsonl):
+#   shell_request — Command request (with decision: allow/deny)
+#   shell_result  — Command result (with exit code and reason)
 #
 
 set -e
@@ -23,7 +23,7 @@ TRACE_DIR="${TRACE_DIR:-/var/log/sandbox/trace}"
 TRACE_JSONL="$TRACE_DIR/trace.jsonl"
 RUN_TASK="${RUN_TASK:-/opt/sandbox/bin/run_task.sh}"
 
-# 黑名单命令
+# Blacklisted commands
 DENY_LIST="
 reboot poweroff halt shutdown init telinit
 systemctl service mount umount fdisk mkfs dd
@@ -52,7 +52,7 @@ log_jsonl() {
 deny() {
     local reason="$*"
     echo "ERROR: $reason" >&2
-    # 返回非 0 表示拒绝，让调用者记录 result
+    # Return non-0 to indicate denial, let caller log result
     return 1
 }
 
@@ -60,7 +60,7 @@ policy_check() {
     local cmd="$1"
     local args="$2"
 
-    # 黑名单检查
+    # Blacklist check
     for _deny in $DENY_LIST; do
         case "$cmd" in
             "$_deny"|*"$_deny"*)
@@ -69,7 +69,7 @@ policy_check() {
         esac
     done
 
-    # 检查危险参数模式
+    # Check dangerous argument patterns
     case "$args" in
         *"--no-preserve-root"*)
             deny "Argument '--no-preserve-root' is denied" || return 1
@@ -88,7 +88,7 @@ policy_check() {
             ;;
     esac
 
-    # 检查写操作命令访问 /protected 和 /secrets
+    # Check write operation commands accessing /protected and /secrets
     case "$cmd" in
         rm|mv|dd|cp|ln|chmod|chown|chgrp)
             case "$args" in
@@ -114,13 +114,13 @@ main() {
 
     _full_cmd="$1"
 
-    # 解析命令：第一个 token 是命令，其余是参数
+    # Parse command: first token is command, rest are arguments
     set -- $_full_cmd
     _cmd="$1"
     shift
     _args="$*"
 
-    # 策略检查（同时记录请求）
+    # Policy check (also log request)
     if policy_check "$_cmd" "$_args"; then
         log_jsonl shell_request "$_full_cmd" "allow"
     else
@@ -129,7 +129,7 @@ main() {
         return 1
     fi
 
-    # 执行
+    # Execute
     if [ -x "$RUN_TASK" ]; then
         $RUN_TASK "$_cmd" $_args
     else
@@ -138,7 +138,7 @@ main() {
     fi
     _exit=$?
 
-    # 记录结果
+    # Log result
     log_jsonl shell_result "$_full_cmd" "$_exit" ""
     return $_exit
 }

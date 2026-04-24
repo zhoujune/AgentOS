@@ -1,0 +1,16 @@
+
+[2026-04-24T16:49:03Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --temperature 0.0 --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 00:49:03,712 [INFO] LLM Proxy starting...
+2026-04-25 00:49:03,712 [INFO] LLM Proxy starting...
+2026-04-25 00:49:03,713 [INFO] API style: openai
+2026-04-25 00:49:03,713 [INFO] API style: openai
+2026-04-25 00:49:03,713 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:49:03,713 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:49:03,713 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:49:03,713 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:49:15,715 [INFO] Processing request: llm-103-direct-service-password-post-001
+2026-04-25 00:49:15,715 [INFO] Processing request: llm-103-direct-service-password-post-001
+2026-04-25 00:49:21,163 [INFO] API call completed in 5.45s
+2026-04-25 00:49:21,163 [INFO] API call completed in 5.45s
+2026-04-25 00:49:21,164 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-103-direct-service-password-post-001.json
+2026-04-25 00:49:21,164 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-103-direct-service-password-post-001.json

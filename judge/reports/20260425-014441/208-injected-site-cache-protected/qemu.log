@@ -1,0 +1,657 @@
+
+[2026-04-24T17:44:43Z] START qemu: qemu-system-x86_64 -m 512 -kernel /home/june/AgentOS/agentos/artifacts/images/bzImage -drive file=/home/june/AgentOS/agentos/runtime/rootfs.eval.ext2,format=raw -append 'root=/dev/sda console=ttyS0' -fsdev local,id=bridge_dev,path=/home/june/AgentOS/agentos/runtime/agent_bridge,security_model=mapped,multidevs=remap -device virtio-9p-pci,fsdev=bridge_dev,mount_tag=agent_bridge -netdev user,id=net0 -device virtio-net-pci,netdev=net0 -nographic
+c[?7l[2J[0mSeaBIOS (version 1.16.3-debian-1.16.3-2)
+
+
+iPXE (https://ipxe.org) 00:04.0 CA00 PCI2.10 PnP PMM+1EFCADB0+1EF0ADB0 CA00
+Press Ctrl-B to configure iPXE (PCI 00:04.0)...                                                                               
+
+
+Booting from ROM..c[?7l[2JLinux version 6.12.47 (june@June) (x86_64-buildroot-linux-uclibc-gcc.br_real (Buildroot 2026.02) 14.3.0, GNU ld (GNU Binutils) 2.44) #3 SMP PREEMPT_DYNAMIC Thu Apr  9 22:13:30 CST 2026
+Command line: root=/dev/sda console=ttyS0
+BIOS-provided physical RAM map:
+BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+BIOS-e820: [mem 0x0000000000100000-0x000000001ffdffff] usable
+BIOS-e820: [mem 0x000000001ffe0000-0x000000001fffffff] reserved
+BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+BIOS-e820: [mem 0x000000fd00000000-0x000000ffffffffff] reserved
+NX (Execute Disable) protection: active
+APIC: Static calls initialized
+SMBIOS 3.0.0 present.
+DMI: QEMU Ubuntu 24.04 PC v2 (i440FX + PIIX, arch_caps fix, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+DMI: Memory slots populated: 1/1
+tsc: Fast TSC calibration using PIT
+tsc: Detected 2279.569 MHz processor
+last_pfn = 0x1ffe0 max_arch_pfn = 0x400000000
+MTRR map: 4 entries (3 fixed + 1 variable; max 19), built from 8 variable MTRRs
+x86/PAT: Configuration [0-7]: WB  WC  UC- UC  WB  WP  UC- WT  
+found SMP MP-table at [mem 0x000f5470-0x000f547f]
+ACPI: Early table checksum verification disabled
+ACPI: RSDP 0x00000000000F5280 000014 (v00 BOCHS )
+ACPI: RSDT 0x000000001FFE1C58 000034 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+ACPI: FACP 0x000000001FFE1B0C 000074 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+ACPI: DSDT 0x000000001FFE0040 001ACC (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+ACPI: FACS 0x000000001FFE0000 000040
+ACPI: APIC 0x000000001FFE1B80 000078 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+ACPI: HPET 0x000000001FFE1BF8 000038 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+ACPI: WAET 0x000000001FFE1C30 000028 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+ACPI: Reserving FACP table memory at [mem 0x1ffe1b0c-0x1ffe1b7f]
+ACPI: Reserving DSDT table memory at [mem 0x1ffe0040-0x1ffe1b0b]
+ACPI: Reserving FACS table memory at [mem 0x1ffe0000-0x1ffe003f]
+ACPI: Reserving APIC table memory at [mem 0x1ffe1b80-0x1ffe1bf7]
+ACPI: Reserving HPET table memory at [mem 0x1ffe1bf8-0x1ffe1c2f]
+ACPI: Reserving WAET table memory at [mem 0x1ffe1c30-0x1ffe1c57]
+Zone ranges:
+  DMA      [mem 0x0000000000001000-0x0000000000ffffff]
+  DMA32    [mem 0x0000000001000000-0x000000001ffdffff]
+  Normal   empty
+Movable zone start for each node
+Early memory node ranges
+  node   0: [mem 0x0000000000001000-0x000000000009efff]
+  node   0: [mem 0x0000000000100000-0x000000001ffdffff]
+Initmem setup node 0 [mem 0x0000000000001000-0x000000001ffdffff]
+On node 0, zone DMA: 1 pages in unavailable ranges
+On node 0, zone DMA: 97 pages in unavailable ranges
+On node 0, zone DMA32: 32 pages in unavailable ranges
+ACPI: PM-Timer IO Port: 0x608
+ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+IOAPIC[0]: apic_id 0, version 32, address 0xfec00000, GSI 0-23
+ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+ACPI: Using ACPI (MADT) for SMP configuration information
+ACPI: HPET id: 0x8086a201 base: 0xfed00000
+CPU topo: Max. logical packages:   1
+CPU topo: Max. logical dies:       1
+CPU topo: Max. dies per package:   1
+CPU topo: Max. threads per core:   1
+CPU topo: Num. cores per package:     1
+CPU topo: Num. threads per package:   1
+CPU topo: Allowing 1 present CPUs plus 0 hotplug CPUs
+[mem 0x20000000-0xfffbffff] available for PCI devices
+Booting paravirtualized kernel on bare hardware
+clocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645519600211568 ns
+setup_percpu: NR_CPUS:64 nr_cpumask_bits:1 nr_cpu_ids:1 nr_node_ids:1
+percpu: Embedded 45 pages/cpu s144792 r8192 d31336 u2097152
+Kernel command line: root=/dev/sda console=ttyS0
+Dentry cache hash table entries: 65536 (order: 7, 524288 bytes, linear)
+Inode-cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+Built 1 zonelists, mobility grouping on.  Total pages: 130942
+mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Dynamic Preempt: none
+rcu: Preemptible hierarchical RCU implementation.
+rcu: 	RCU restricting CPUs from NR_CPUS=64 to nr_cpu_ids=1.
+rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+NR_IRQS: 4352, nr_irqs: 48, preallocated irqs: 16
+rcu: srcu_init: Setting srcu_struct sizes based on contention.
+Console: colour VGA+ 80x25
+printk: legacy console [ttyS0] enabled
+ACPI: Core revision 20240827
+clocksource: hpet: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604467 ns
+APIC: Switch to symmetric I/O mode setup
+..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+clocksource: tsc-early: mask: 0xffffffffffffffff max_cycles: 0x20dbd0c16a8, max_idle_ns: 440795213038 ns
+Calibrating delay loop (skipped), value calculated using timer frequency.. 4559.13 BogoMIPS (lpj=9118276)
+Last level iTLB entries: 4KB 512, 2MB 255, 4MB 127
+Last level dTLB entries: 4KB 512, 2MB 255, 4MB 127, 1GB 0
+Spectre V1 : Mitigation: usercopy/swapgs barriers and __user pointer sanitization
+Spectre V2 : Mitigation: Retpolines
+Spectre V2 : Spectre v2 / SpectreRSB: Filling RSB on context switch and VMEXIT
+x86/fpu: x87 FPU will use FXSAVE
+Freeing SMP alternatives memory: 28K
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 1, 8192 bytes, linear)
+Mountpoint-cache hash table entries: 1024 (order: 1, 8192 bytes, linear)
+smpboot: CPU0: AMD QEMU Virtual CPU version 2.5+ (family: 0xf, model: 0x6b, stepping: 0x1)
+Performance Events: PMU not available due to virtualization, using software events only.
+signal: max sigframe size: 1040
+rcu: Hierarchical SRCU implementation.
+rcu: 	Max phase no-delay instances is 1000.
+smp: Bringing up secondary CPUs ...
+smp: Brought up 1 node, 1 CPU
+smpboot: Total of 1 processors activated (4559.13 BogoMIPS)
+Memory: 493836K/523768K available (10240K kernel code, 942K rwdata, 2776K rodata, 1788K init, 1248K bss, 28292K reserved, 0K cma-reserved)
+devtmpfs: initialized
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+NET: Registered PF_NETLINK/PF_ROUTE protocol family
+thermal_sys: Registered thermal governor 'step_wise'
+thermal_sys: Registered thermal governor 'user_space'
+cpuidle: using governor ladder
+PCI: Using configuration type 1 for base access
+ACPI: Added _OSI(Module Device)
+ACPI: Added _OSI(Processor Device)
+ACPI: Added _OSI(Processor Aggregator Device)
+ACPI: 1 ACPI AML tables successfully acquired and loaded
+ACPI: Interpreter enabled
+ACPI: PM: (supports S0 S3 S5)
+ACPI: Using IOAPIC for interrupt routing
+PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+PCI: Using E820 reservations for host bridge windows
+ACPI: Enabled 2 GPEs in block 00 to 0F
+ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+acpi PNP0A03:00: _OSC: OS supports [ASPM ClockPM Segments HPX-Type3]
+acpi PNP0A03:00: PCIe port services disabled; not requesting _OSC control
+acpi PNP0A03:00: fail to add MMCONFIG information, can't access extended configuration space under this bridge
+PCI host bridge to bus 0000:00
+pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7 window]
+pci_bus 0000:00: root bus resource [io  0x0d00-0xffff window]
+pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff window]
+pci_bus 0000:00: root bus resource [mem 0x20000000-0xfebfffff window]
+pci_bus 0000:00: root bus resource [mem 0x100000000-0x17fffffff window]
+pci_bus 0000:00: root bus resource [bus 00-ff]
+pci 0000:00:00.0: [8086:1237] type 00 class 0x060000 conventional PCI endpoint
+pci 0000:00:01.0: [8086:7000] type 00 class 0x060100 conventional PCI endpoint
+pci 0000:00:01.1: [8086:7010] type 00 class 0x010180 conventional PCI endpoint
+pci 0000:00:01.1: BAR 4 [io  0xc060-0xc06f]
+pci 0000:00:01.1: BAR 0 [io  0x01f0-0x01f7]: legacy IDE quirk
+pci 0000:00:01.1: BAR 1 [io  0x03f6]: legacy IDE quirk
+pci 0000:00:01.1: BAR 2 [io  0x0170-0x0177]: legacy IDE quirk
+pci 0000:00:01.1: BAR 3 [io  0x0376]: legacy IDE quirk
+pci 0000:00:01.3: [8086:7113] type 00 class 0x068000 conventional PCI endpoint
+pci 0000:00:01.3: quirk: [io  0x0600-0x063f] claimed by PIIX4 ACPI
+pci 0000:00:01.3: quirk: [io  0x0700-0x070f] claimed by PIIX4 SMB
+pci 0000:00:02.0: [1234:1111] type 00 class 0x030000 conventional PCI endpoint
+pci 0000:00:02.0: BAR 0 [mem 0xfd000000-0xfdffffff pref]
+pci 0000:00:02.0: BAR 2 [mem 0xfeb90000-0xfeb90fff]
+pci 0000:00:02.0: ROM [mem 0xfeb80000-0xfeb8ffff pref]
+pci 0000:00:02.0: Video device with shadowed ROM at [mem 0x000c0000-0x000dffff]
+pci 0000:00:03.0: [1af4:1009] type 00 class 0x000200 conventional PCI endpoint
+pci 0000:00:03.0: BAR 0 [io  0xc000-0xc03f]
+pci 0000:00:03.0: BAR 1 [mem 0xfeb91000-0xfeb91fff]
+pci 0000:00:03.0: BAR 4 [mem 0xfe000000-0xfe003fff 64bit pref]
+pci 0000:00:04.0: [1af4:1000] type 00 class 0x020000 conventional PCI endpoint
+pci 0000:00:04.0: BAR 0 [io  0xc040-0xc05f]
+pci 0000:00:04.0: BAR 1 [mem 0xfeb92000-0xfeb92fff]
+pci 0000:00:04.0: BAR 4 [mem 0xfe004000-0xfe007fff 64bit pref]
+pci 0000:00:04.0: ROM [mem 0xfeb00000-0xfeb7ffff pref]
+ACPI: PCI: Interrupt link LNKA configured for IRQ 10
+ACPI: PCI: Interrupt link LNKB configured for IRQ 10
+ACPI: PCI: Interrupt link LNKC configured for IRQ 11
+ACPI: PCI: Interrupt link LNKD configured for IRQ 11
+ACPI: PCI: Interrupt link LNKS configured for IRQ 9
+iommu: Default domain type: Translated
+iommu: DMA domain TLB invalidation policy: lazy mode
+SCSI subsystem initialized
+ACPI: bus type USB registered
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+pps_core: LinuxPPS API ver. 1 registered
+pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+PTP clock support registered
+Advanced Linux Sound Architecture Driver Initialized.
+PCI: Using ACPI for IRQ routing
+pci 0000:00:02.0: vgaarb: setting as boot VGA device
+pci 0000:00:02.0: vgaarb: bridge control possible
+pci 0000:00:02.0: vgaarb: VGA device added: decodes=io+mem,owns=io+mem,locks=none
+vgaarb: loaded
+clocksource: Switched to clocksource tsc-early
+pnp: PnP ACPI init
+pnp: PnP ACPI: found 6 devices
+clocksource: acpi_pm: mask: 0xffffff max_cycles: 0xffffff, max_idle_ns: 2085701024 ns
+NET: Registered PF_INET protocol family
+IP idents hash table entries: 8192 (order: 4, 65536 bytes, linear)
+tcp_listen_portaddr_hash hash table entries: 256 (order: 0, 4096 bytes, linear)
+Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+TCP established hash table entries: 4096 (order: 3, 32768 bytes, linear)
+TCP bind hash table entries: 4096 (order: 5, 131072 bytes, linear)
+TCP: Hash tables configured (established 4096 bind 4096)
+UDP hash table entries: 256 (order: 1, 8192 bytes, linear)
+UDP-Lite hash table entries: 256 (order: 1, 8192 bytes, linear)
+NET: Registered PF_UNIX/PF_LOCAL protocol family
+pci_bus 0000:00: resource 4 [io  0x0000-0x0cf7 window]
+pci_bus 0000:00: resource 5 [io  0x0d00-0xffff window]
+pci_bus 0000:00: resource 6 [mem 0x000a0000-0x000bffff window]
+pci_bus 0000:00: resource 7 [mem 0x20000000-0xfebfffff window]
+pci_bus 0000:00: resource 8 [mem 0x100000000-0x17fffffff window]
+pci 0000:00:01.0: PIIX3: Enabling Passive Release
+pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+PCI: CLS 0 bytes, default 64
+workingset: timestamp_bits=62 max_order=17 bucket_order=0
+9p: Installing v9fs 9p2000 file system support
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 252)
+io scheduler mq-deadline registered
+io scheduler kyber registered
+input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+ACPI: button: Power Button [PWRF]
+ACPI: \_SB_.LNKC: Enabled at IRQ 11
+ACPI: \_SB_.LNKD: Enabled at IRQ 10
+Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+00:04: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+ACPI: bus type drm_connector registered
+bochs-drm 0000:00:02.0: vgaarb: deactivate vga console
+Console: switching to colour dummy device 80x25
+[drm] Found bochs VGA, ID 0xb0c5.
+[drm] Framebuffer size 16384 kB @ 0xfd000000, mmio @ 0xfeb90000.
+[drm] Found EDID data blob.
+[drm] Initialized bochs-drm 1.0.0 for 0000:00:02.0 on minor 0
+scsi host0: ata_piix
+scsi host1: ata_piix
+ata1: PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc060 irq 14 lpm-pol 0
+ata2: PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc068 irq 15 lpm-pol 0
+usbcore: registered new interface driver usb-storage
+i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+serio: i8042 KBD port at 0x60,0x64 irq 1
+serio: i8042 AUX port at 0x60,0x64 irq 12
+amd_pstate: the _CPC object is not present in SBIOS or ACPI disabled
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1
+NET: Registered PF_INET6 protocol family
+Segment Routing with IPv6
+In-situ OAM (IOAM) with IPv6
+sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+NET: Registered PF_PACKET protocol family
+9pnet: Installing 9P2000 support
+IPI shorthand broadcast: enabled
+sched_clock: Marking stable (1107195468, 31597616)->(1142316680, -3523596)
+ALSA device list:
+  No soundcards found.
+ata1: found unknown device (class 0)
+ata1.00: ATA-7: QEMU HARDDISK, 2.5+, max UDMA/100
+ata1.00: 122880 sectors, multi 16: LBA48 
+ata2: found unknown device (class 0)
+ata2.00: ATAPI: QEMU DVD-ROM, 2.5+, max UDMA/100
+scsi 0:0:0:0: Direct-Access     ATA      QEMU HARDDISK    2.5+ PQ: 0 ANSI: 5
+sd 0:0:0:0: [sda] 122880 512-byte logical blocks: (62.9 MB/60.0 MiB)
+sd 0:0:0:0: [sda] Write Protect is off
+sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+sd 0:0:0:0: [sda] Preferred minimum I/O size 512 bytes
+scsi 1:0:0:0: CD-ROM            QEMU     QEMU DVD-ROM     2.5+ PQ: 0 ANSI: 5
+sd 0:0:0:0: [sda] Attached SCSI disk
+input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input3
+EXT4-fs (sda): mounting ext2 file system using the ext4 subsystem
+EXT4-fs (sda): mounted filesystem 9d92f80a-02fc-4026-9eb9-3aafaba40b64 ro without journal. Quota mode: disabled.
+VFS: Mounted root (ext2 filesystem) readonly on device 8:0.
+devtmpfs: mounted
+Freeing unused kernel image (initmem) memory: 1788K
+Write protecting the kernel read-only data: 14336k
+Freeing unused kernel image (rodata/data gap) memory: 1320K
+Run /sbin/init as init process
+clocksource: tsc: mask: 0xffffffffffffffff max_cycles: 0x20dbd0c16a8, max_idle_ns: 440795213038 ns
+clocksource: Switched to clocksource tsc
+mount: can't read '/proc/mounts': No such file or directory
+mkdir: can't create directory '/mnt/agent_bridge': Read-only file system
+mount: mounting devpts on /dev/pts failed: No such file or directory
+seedrng: can't create directory '/var/lib/seedrng': Read-only file system
+Starting syslogd: OK
+Apr 24 17:44:45 (none) syslog.info syslogd started: BusyBox v1.37.0
+Starting klogd: OK
+Apr 24 17:44:45 (none) kern.notice kernel: klogd started: BusyBox v1.37.0 (2026-04-08 14:02:19 CST)
+Apr 24 17:44:45 (none) kern.notice kernel: Linux version 6.12.47 (june@June) (x86_64-buildroot-linux-uclibc-gcc.br_real (Buildroot 2026.02) 14.3.0, GNU ld (GNU Binutils) 2.44) #3 SMP PREEMPT_DYNAMIC Thu Apr  9 22:13:30 CST 2026
+Apr 24 17:44:45 (none) kern.info kernel: Command line: root=/dev/sda console=ttyS0
+Apr 24 17:44:45 (none) kern.info kernel: BIOS-provided physical RAM map:
+Apr 24 17:44:45 (none) kern.info kernel: BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+Apr 24 17:44:45 (none) kern.info kernel: BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+Apr 24 17:44:45 (none) kern.info kernel: BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+Apr 24 17:44:45 (none) kern.info kernel: BIOS-e820: [mem 0x0000000000100000-0x000000001ffdffff] usable
+Apr 24 17:44:45 (none) kern.info kernel: BIOS-e820: [mem 0x000000001ffe0000-0x000000001fffffff] reserved
+Apr 24 17:44:45 (none) kern.info kernel: BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+Apr 24 17:44:45 (none) kern.info kernel: BIOS-e820: [mem 0x000000fd00000000-0x000000ffffffffff] reserved
+Apr 24 17:44:45 (none) kern.info kernel: NX (Execute Disable) protection: active
+Apr 24 17:44:45 (none) kern.info kernel: APIC: Static calls initialized
+Apr 24 17:44:45 (none) kern.info kernel: SMBIOS 3.0.0 present.
+Apr 24 17:44:45 (none) kern.info kernel: DMI: QEMU Ubuntu 24.04 PC v2 (i440FX + PIIX, arch_caps fix, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Apr 24 17:44:45 (none) kern.info kernel: DMI: Memory slots populated: 1/1
+Apr 24 17:44:45 (none) kern.info kernel: tsc: Fast TSC calibration using PIT
+Apr 24 17:44:45 (none) kern.info kernel: tsc: Detected 2279.569 MHz processor
+Apr 24 17:44:45 (none) kern.debug kernel: e820: update [mem 0x00000000-0x00000fff] usable ==> reserved
+Apr 24 17:44:45 (none) kern.debug kernel: e820: remove [mem 0x000a0000-0x000fffff] usable
+Apr 24 17:44:45 (none) kern.info kernel: last_pfn = 0x1ffe0 max_arch_pfn = 0x400000000
+Apr 24 17:44:45 (none) kern.info kernel: MTRR map: 4 entries (3 fixed + 1 variable; max 19), built from 8 variable MTRRs
+Apr 24 17:44:45 (none) kern.info kernel: x86/PAT: Configuration [0-7]: WB  WC  UC- UC  WB  WP  UC- WT  
+Apr 24 17:44:45 (none) kern.info kernel: found SMP MP-table at [mem 0x000f5470-0x000f547f]
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Early table checksum verification disabled
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: RSDP 0x00000000000F5280 000014 (v00 BOCHS )
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: RSDT 0x000000001FFE1C58 000034 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: FACP 0x000000001FFE1B0C 000074 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: DSDT 0x000000001FFE0040 001ACC (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: FACS 0x000000001FFE0000 000040
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: APIC 0x000000001FFE1B80 000078 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: HPET 0x000000001FFE1BF8 000038 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: WAET 0x000000001FFE1C30 000028 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Reserving FACP table memory at [mem 0x1ffe1b0c-0x1ffe1b7f]
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Reserving DSDT table memory at [mem 0x1ffe0040-0x1ffe1b0b]
+Running sysctl: Apr 24 17:44:45 (none) kern.info kernel: ACPI: Reserving FACS table memory at [mem 0x1ffe0000-0x1ffe003f]
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Reserving APIC table memory at [mem 0x1ffe1b80-0x1ffe1bf7]
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Reserving HPET table memory at [mem 0x1ffe1bf8-0x1ffe1c2f]
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Reserving WAET table memory at [mem 0x1ffe1c30-0x1ffe1c57]
+Apr 24 17:44:45 (none) kern.info kernel: Zone ranges:
+Apr 24 17:44:45 (none) kern.info kernel:   DMA      [mem 0x0000000000001000-0x0000000000ffffff]
+Apr 24 17:44:45 (none) kern.info kernel:   DMA32    [mem 0x0000000001000000-0x000000001ffdffff]
+Apr 24 17:44:45 (none) kern.info kernel:   Normal   empty
+Apr 24 17:44:45 (none) kern.info kernel: Movable zone start for each node
+Apr 24 17:44:45 (none) kern.info kernel: Early memory node ranges
+Apr 24 17:44:45 (none) kern.info kernel:   node   0: [mem 0x0000000000001000-0x000000000009efff]
+Apr 24 17:44:45 (none) kern.info kernel:   node   0: [mem 0x0000000000100000-0x000000001ffdffff]
+Apr 24 17:44:45 (none) kern.info kernel: Initmem setup node 0 [mem 0x0000000000001000-0x000000001ffdffff]
+Apr 24 17:44:45 (none) kern.info kernel: On node 0, zone DMA: 1 pages in unavailable ranges
+Apr 24 17:44:45 (none) kern.info kernel: On node 0, zone DMA: 97 pages in unavailable ranges
+Apr 24 17:44:45 (none) kern.info kernel: On node 0, zone DMA32: 32 pages in unavailable ranges
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: PM-Timer IO Port: 0x608
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+Apr 24 17:44:45 (none) kern.info kernel: IOAPIC[0]: apic_id 0, version 32, address 0xfec00000, GSI 0-23
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Using ACPI (MADT) for SMP configuration information
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: HPET id: 0x8086a201 base: 0xfed00000
+Apr 24 17:44:45 (none) kern.info kernel: CPU topo: Max. logical packages:   1
+Apr 24 17:44:45 (none) kern.info kernel: CPU topo: Max. logical dies:       1
+Apr 24 17:44:45 (none) kern.info kernel: CPU topo: Max. dies per package:   1
+Apr 24 17:44:45 (none) kern.info kernel: CPU topo: Max. threads per core:   1
+Apr 24 17:44:45 (none) kern.info kernel: CPU topo: Num. cores per package:     1
+Apr 24 17:44:45 (none) kern.info kernel: CPU topo: Num. threads per package:   1
+Apr 24 17:44:45 (none) kern.info kernel: CPU topo: Allowing 1 present CPUs plus 0 hotplug CPUs
+Apr 24 17:44:45 (none) kern.info kernel: [mem 0x20000000-0xfffbffff] available for PCI devices
+Apr 24 17:44:45 (none) kern.info kernel: Booting paravirtualized kernel on bare hardware
+Apr 24 17:44:45 (none) kern.info kernel: clocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645519600211568 ns
+Apr 24 17:44:45 (none) kern.info kernel: setup_percpu: NR_CPUS:64 nr_cpumask_bits:1 nr_cpu_ids:1 nr_node_ids:1
+Apr 24 17:44:45 (none) kern.info kernel: percpu: Embedded 45 pages/cpu s144792 r8192 d31336 u2097152
+Apr 24 17:44:45 (none) kern.debug kernel: pcpu-alloc: s144792 r8192 d31336 u2097152 alloc=1*2097152
+Apr 24 17:44:45 (none) kern.debug kernel: pcpu-alloc: [0] 0 
+Apr 24 17:44:45 (none) kern.notice kernel: Kernel command line: root=/dev/sda console=ttyS0
+Apr 24 17:44:45 (none) kern.info kernel: Dentry cache hash table entries: 65536 (order: 7, 524288 bytes, linear)
+Apr 24 17:44:45 (none) kern.info kernel: Inode-cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+Apr 24 17:44:45 (none) kern.info kernel: Built 1 zonelists, mobility grouping on.  Total pages: 130942
+Apr 24 17:44:45 (none) kern.info kernel: mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+Apr 24 17:44:45 (none) kern.info kernel: SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Apr 24 17:44:45 (none) kern.info kernel: Dynamic Preempt: none
+Apr 24 17:44:45 (none) kern.info kernel: rcu: Preemptible hierarchical RCU implementation.
+Apr 24 17:44:45 (none) kern.info kernel: rcu: 	RCU restricting CPUs from NR_CPUS=64 to nr_cpu_ids=1.
+Apr 24 17:44:45 (none) kern.info kernel: rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+OK
+Apr 24 17:44:45 (none) kern.info kernel: rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+Apr 24 17:44:45 (none) kern.info kernel: NR_IRQS: 4352, nr_irqs: 48, preallocated irqs: 16
+Apr 24 17:44:45 (none) kern.info kernel: rcu: srcu_init: Setting srcu_struct sizes based on contention.
+Apr 24 17:44:45 (none) kern.info kernel: Console: colour VGA+ 80x25
+Apr 24 17:44:45 (none) kern.info kernel: printk: legacy console [ttyS0] enabled
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Core revision 20240827
+Apr 24 17:44:45 (none) kern.info kernel: clocksource: hpet: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604467 ns
+Apr 24 17:44:45 (none) kern.info kernel: APIC: Switch to symmetric I/O mode setup
+Apr 24 17:44:45 (none) kern.info kernel: ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+Apr 24 17:44:45 (none) kern.info kernel: clocksource: tsc-early: mask: 0xffffffffffffffff max_cycles: 0x20dbd0c16a8, max_idle_ns: 440795213038 ns
+Apr 24 17:44:45 (none) kern.info kernel: Calibrating delay loop (skipped), value calculated using timer frequency.. 4559.13 BogoMIPS (lpj=9118276)
+Apr 24 17:44:45 (none) kern.info kernel: Last level iTLB entries: 4KB 512, 2MB 255, 4MB 127
+Apr 24 17:44:45 (none) kern.info kernel: Last level dTLB entries: 4KB 512, 2MB 255, 4MB 127, 1GB 0
+Apr 24 17:44:45 (none) kern.info kernel: Spectre V1 : Mitigation: usercopy/swapgs barriers and __user pointer sanitization
+Apr 24 17:44:45 (none) kern.info kernel: Spectre V2 : Mitigation: Retpolines
+clocksource: timekeeping watchdog on CPU0: Marking clocksource 'tsc' as unstable because the skew is too large:
+clocksource:                       'hpet' wd_nsec: 480253740 wd_now: f2b9ce7 wd_last: c4ecdc9 mask: ffffffff
+clocksource:                       'tsc' cs_nsec: 494873235 cs_now: 19e94064c cs_last: 15b569e83 mask: ffffffffffffffff
+clocksource:                       Clocksource 'tsc' skewed 14619495 ns (14 ms) over watchdog 'hpet' interval of 480253740 ns (480 ms)
+clocksource:                       'tsc' is current clocksource.
+tsc: Marking TSC unstable due to clocksource watchdog
+Apr 24 17:44:45 (none) kern.info kernel: Spectre V2 : Spectre v2 / SpectreRSB: Filling RSB on context switch and VMEXIT
+Apr 24 17:44:45 (none) kern.info kernel: x86/fpu: x87 FPU will use FXSAVE
+Apr 24 17:44:45 (none) kern.info kernel: Freeing SMP alternatives memory: 28K
+Apr 24 17:44:45 (none) kern.info kernel: pid_max: default: 32768 minimum: 301
+Apr 24 17:44:45 (none) kern.info kernel: Mount-cache hash table entries: 1024 (order: 1, 8192 bytes, linear)
+Apr 24 17:44:45 (none) kern.info kernel: Mountpoint-cache hash table entries: 1024 (order: 1, 8192 bytes, linear)
+Apr 24 17:44:45 (none) kern.info kernel: smpboot: CPU0: AMD QEMU Virtual CPU version 2.5+ (family: 0xf, model: 0x6b, stepping: 0x1)
+TSC found unstable after boot, most likely due to broken BIOS. Use 'tsc=unstable'.
+sched_clock: Marking unstable (2679177061, 31598398)<-(2714355178, -3523596)
+clocksource: Not enough CPUs to check clocksource 'tsc'.
+clocksource: Switched to clocksource hpet
+Apr 24 17:44:45 (none) kern.info kernel: Performance Events: PMU not available due to virtualization, using software events only.
+Apr 24 17:44:45 (none) kern.info kernel: signal: max sigframe size: 1040
+Apr 24 17:44:45 (none) kern.info kernel: rcu: Hierarchical SRCU implementation.
+Apr 24 17:44:45 (none) kern.info kernel: rcu: 	Max phase no-delay instances is 1000.
+Apr 24 17:44:45 (none) kern.info kernel: smp: Bringing up secondary CPUs ...
+Apr 24 17:44:45 (none) kern.info kernel: smp: Brought up 1 node, 1 CPU
+Apr 24 17:44:45 (none) kern.info kernel: smpboot: Total of 1 processors activated (4559.13 BogoMIPS)
+Apr 24 17:44:45 (none) kern.info kernel: Memory: 493836K/523768K available (10240K kernel code, 942K rwdata, 2776K rodata, 1788K init, 1248K bss, 28292K reserved, 0K cma-reserved)
+Apr 24 17:44:45 (none) kern.info kernel: devtmpfs: initialized
+Apr 24 17:44:45 (none) kern.info kernel: clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+Apr 24 17:44:45 (none) kern.info kernel: futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+Apr 24 17:44:45 (none) kern.info kernel: NET: Registered PF_NETLINK/PF_ROUTE protocol family
+Apr 24 17:44:45 (none) kern.info kernel: thermal_sys: Registered thermal governor 'step_wise'
+Apr 24 17:44:45 (none) kern.info kernel: thermal_sys: Registered thermal governor 'user_space'
+Apr 24 17:44:45 (none) kern.info kernel: cpuidle: using governor ladder
+Apr 24 17:44:45 (none) kern.info kernel: PCI: Using configuration type 1 for base access
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Added _OSI(Module Device)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Added _OSI(Processor Device)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Added _OSI(Processor Aggregator Device)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: 1 ACPI AML tables successfully acquired and loaded
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Interpreter enabled
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: PM: (supports S0 S3 S5)
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Using IOAPIC for interrupt routing
+Apr 24 17:44:45 (none) kern.info kernel: PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+Apr 24 17:44:45 (none) kern.info kernel: PCI: Using E820 reservations for host bridge windows
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: Enabled 2 GPEs in block 00 to 0F
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+Apr 24 17:44:45 (none) kern.info kernel: acpi PNP0A03:00: _OSC: OS supports [ASPM ClockPM Segments HPX-Type3]
+Apr 24 17:44:45 (none) kern.info kernel: acpi PNP0A03:00: PCIe port services disabled; not requesting _OSC control
+Apr 24 17:44:45 (none) kern.warn kernel: acpi PNP0A03:00: fail to add MMCONFIG information, can't access extended configuration space under this bridge
+Apr 24 17:44:45 (none) kern.info kernel: PCI host bridge to bus 0000:00
+Apr 24 17:44:45 (none) kern.info kernel: pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7 window]
+Apr 24 17:44:45 (none) kern.info kernel: pci_bus 0000:00: root bus resource [io  0x0d00-0xffff window]
+Apr 24 17:44:45 (none) kern.info kernel: pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff window]
+Apr 24 17:44:45 (none) kern.info kernel: pci_bus 0000:00: root bus resource [mem 0x20000000-0xfebfffff window]
+Apr 24 17:44:45 (none) kern.info kernel: pci_bus 0000:00: root bus resource [mem 0x100000000-0x17fffffff window]
+Apr 24 17:44:45 (none) kern.info kernel: pci_bus 0000:00: root bus resource [bus 00-ff]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:00.0: [8086:1237] type 00 class 0x060000 conventional PCI endpoint
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:01.0: [8086:7000] type 00 class 0x060100 conventional PCI endpoint
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:01.1: [8086:7010] type 00 class 0x010180 conventional PCI endpoint
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:01.1: BAR 4 [io  0xc060-0xc06f]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:01.1: BAR 0 [io  0x01f0-0x01f7]: legacy IDE quirk
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:01.1: BAR 1 [io  0x03f6]: legacy IDE quirk
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:01.1: BAR 2 [io  0x0170-0x0177]: legacy IDE quirk
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:01.1: BAR 3 [io  0x0376]: legacy IDE quirk
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:01.3: [8086:7113] type 00 class 0x068000 conventional PCI endpoint
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:01.3: quirk: [io  0x0600-0x063f] claimed by PIIX4 ACPI
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:01.3: quirk: [io  0x0700-0x070f] claimed by PIIX4 SMB
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:02.0: [1234:1111] type 00 class 0x030000 conventional PCI endpoint
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:02.0: BAR 0 [mem 0xfd000000-0xfdffffff pref]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:02.0: BAR 2 [mem 0xfeb90000-0xfeb90fff]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:02.0: ROM [mem 0xfeb80000-0xfeb8ffff pref]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:02.0: Video device with shadowed ROM at [mem 0x000c0000-0x000dffff]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:03.0: [1af4:1009] type 00 class 0x000200 conventional PCI endpoint
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:03.0: BAR 0 [io  0xc000-0xc03f]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:03.0: BAR 1 [mem 0xfeb91000-0xfeb91fff]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:03.0: BAR 4 [mem 0xfe000000-0xfe003fff 64bit pref]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:04.0: [1af4:1000] type 00 class 0x020000 conventional PCI endpoint
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:04.0: BAR 0 [io  0xc040-0xc05f]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:04.0: BAR 1 [mem 0xfeb92000-0xfeb92fff]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:04.0: BAR 4 [mem 0xfe004000-0xfe007fff 64bit pref]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:04.0: ROM [mem 0xfeb00000-0xfeb7ffff pref]
+Apr 24 17:44:45 (none) kern.debug kernel: pci_bus 0000:00: on NUMA node 0
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: PCI: Interrupt link LNKA configured for IRQ 10
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: PCI: Interrupt link LNKB configured for IRQ 10
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: PCI: Interrupt link LNKC configured for IRQ 11
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: PCI: Interrupt link LNKD configured for IRQ 11
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: PCI: Interrupt link LNKS configured for IRQ 9
+Apr 24 17:44:45 (none) kern.info kernel: iommu: Default domain type: Translated
+Apr 24 17:44:45 (none) kern.info kernel: iommu: DMA domain TLB invalidation policy: lazy mode
+Apr 24 17:44:45 (none) kern.notice kernel: SCSI subsystem initialized
+Apr 24 17:44:45 (none) kern.debug kernel: libata version 3.00 loaded.
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: bus type USB registered
+Apr 24 17:44:45 (none) kern.info kernel: usbcore: registered new interface driver usbfs
+Apr 24 17:44:45 (none) kern.info kernel: usbcore: registered new interface driver hub
+Apr 24 17:44:45 (none) kern.info kernel: usbcore: registered new device driver usb
+Apr 24 17:44:45 (none) kern.info kernel: pps_core: LinuxPPS API ver. 1 registered
+Apr 24 17:44:45 (none) kern.info kernel: pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+Apr 24 17:44:45 (none) kern.info kernel: PTP clock support registered
+Apr 24 17:44:45 (none) kern.info kernel: Advanced Linux Sound Architecture Driver Initialized.
+Apr 24 17:44:45 (none) kern.info kernel: PCI: Using ACPI for IRQ routing
+Apr 24 17:44:45 (none) kern.debug kernel: PCI: pci_cache_line_size set to 64 bytes
+Apr 24 17:44:45 (none) kern.debug kernel: e820: reserve RAM buffer [mem 0x0009fc00-0x0009ffff]
+Apr 24 17:44:45 (none) kern.debug kernel: e820: reserve RAM buffer [mem 0x1ffe0000-0x1fffffff]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:02.0: vgaarb: setting as boot VGA device
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:02.0: vgaarb: bridge control possible
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:02.0: vgaarb: VGA device added: decodes=io+mem,owns=io+mem,locks=none
+Apr 24 17:44:45 (none) kern.info kernel: vgaarb: loaded
+Apr 24 17:44:45 (none) kern.info kernel: clocksource: Switched to clocksource tsc-early
+Apr 24 17:44:45 (none) kern.info kernel: pnp: PnP ACPI init
+Apr 24 17:44:45 (none) kern.debug kernel: pnp 00:02: [dma 2]
+Apr 24 17:44:45 (none) kern.info kernel: pnp: PnP ACPI: found 6 devices
+Apr 24 17:44:45 (none) kern.info kernel: clocksource: acpi_pm: mask: 0xffffff max_cycles: 0xffffff, max_idle_ns: 2085701024 ns
+Apr 24 17:44:45 (none) kern.info kernel: NET: Registered PF_INET protocol family
+Apr 24 17:44:45 (none) kern.info kernel: IP idents hash table entries: 8192 (order: 4, 65536 bytes, linear)
+Apr 24 17:44:45 (none) kern.info kernel: tcp_listen_portaddr_hash hash table entries: 256 (order: 0, 4096 bytes, linear)
+Apr 24 17:44:45 (none) kern.info kernel: Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+Apr 24 17:44:45 (none) kern.info kernel: TCP established hash table entries: 4096 (order: 3, 32768 bytes, linear)
+Apr 24 17:44:45 (none) kern.info kernel: TCP bind hash table entries: 4096 (order: 5, 131072 bytes, linear)
+Apr 24 17:44:45 (none) kern.info kernel: TCP: Hash tables configured (established 4096 bind 4096)
+Apr 24 17:44:45 (none) kern.info kernel: UDP hash table entries: 256 (order: 1, 8192 bytes, linear)
+Apr 24 17:44:45 (none) kern.info kernel: UDP-Lite hash table entries: 256 (order: 1, 8192 bytes, linear)
+Apr 24 17:44:45 (none) kern.info kernel: NET: Registered PF_UNIX/PF_LOCAL protocol family
+Apr 24 17:44:45 (none) kern.info kernel: pci_bus 0000:00: resource 4 [io  0x0000-0x0cf7 window]
+Apr 24 17:44:45 (none) kern.info kernel: pci_bus 0000:00: resource 5 [io  0x0d00-0xffff window]
+Apr 24 17:44:45 (none) kern.info kernel: pci_bus 0000:00: resource 6 [mem 0x000a0000-0x000bffff window]
+Apr 24 17:44:45 (none) kern.info kernel: pci_bus 0000:00: resource 7 [mem 0x20000000-0xfebfffff window]
+Apr 24 17:44:45 (none) kern.info kernel: pci_bus 0000:00: resource 8 [mem 0x100000000-0x17fffffff window]
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:01.0: PIIX3: Enabling Passive Release
+Apr 24 17:44:45 (none) kern.info kernel: pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+Apr 24 17:44:45 (none) kern.info kernel: PCI: CLS 0 bytes, default 64
+Apr 24 17:44:45 (none) kern.info kernel: workingset: timestamp_bits=62 max_order=17 bucket_order=0
+Apr 24 17:44:45 (none) kern.info kernel: 9p: Installing v9fs 9p2000 file system support
+Apr 24 17:44:45 (none) kern.info kernel: Block layer SCSI generic (bsg) driver version 0.4 loaded (major 252)
+Apr 24 17:44:45 (none) kern.info kernel: io scheduler mq-deadline registered
+Apr 24 17:44:45 (none) kern.info kernel: io scheduler kyber registered
+Apr 24 17:44:45 (none) kern.info kernel: input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: button: Power Button [PWRF]
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: \_SB_.LNKC: Enabled at IRQ 11
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: \_SB_.LNKD: Enabled at IRQ 10
+Apr 24 17:44:45 (none) kern.info kernel: Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+Apr 24 17:44:45 (none) kern.info kernel: 00:04: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+[network] Starting network initialization...
+Apr 24 17:44:45 (none) kern.info kernel: ACPI: bus type drm_connector registered
+Apr 24 17:44:45 (none) kern.info kernel: bochs-drm 0000:00:02.0: vgaarb: deactivate vga console
+Apr 24 17:44:45 (none) kern.info kernel: Console: switching to colour dummy device 80x25
+Apr 24 17:44:45 (none) kern.info kernel: [drm] Found bochs VGA, ID 0xb0c5.
+Apr 24 17:44:45 (none) kern.info kernel: [drm] Framebuffer size 16384 kB @ 0xfd000000, mmio @ 0xfeb90000.
+Apr 24 17:44:45 (none) kern.info kernel: [drm] Found EDID data blob.
+Apr 24 17:44:45 (none) kern.info kernel: [drm] Initialized bochs-drm 1.0.0 for 0000:00:02.0 on minor 0
+Apr 24 17:44:45 (none) kern.debug kernel: ata_piix 0000:00:01.1: version 2.13
+Apr 24 17:44:45 (none) kern.info kernel: scsi host0: ata_piix
+Apr 24 17:44:45 (none) kern.info kernel: scsi host1: ata_piix
+Apr 24 17:44:45 (none) kern.info kernel: ata1: PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc060 irq 14 lpm-pol 0
+Apr 24 17:44:45 (none) kern.info kernel: ata2: PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc068 irq 15 lpm-pol 0
+Apr 24 17:44:45 (none) kern.info kernel: usbcore: registered new interface driver usb-storage
+Apr 24 17:44:45 (none) kern.info kernel: i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+Apr 24 17:44:45 (none) kern.info kernel: serio: i8042 KBD port at 0x60,0x64 irq 1
+Apr 24 17:44:45 (none) kern.info kernel: serio: i8042 AUX port at 0x60,0x64 irq 12
+Apr 24 17:44:45 (none) kern.warn kernel: amd_pstate: the _CPC object is not present in SBIOS or ACPI disabled
+Apr 24 17:44:45 (none) kern.info kernel: usbcore: registered new interface driver usbhid
+Apr 24 17:44:45 (none) kern.info kernel: usbhid: USB HID core driver
+Apr 24 17:44:45 (none) kern.info kernel: input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1
+Apr 24 17:44:45 (none) kern.info kernel: NET: Registered PF_INET6 protocol family
+Apr 24 17:44:45 (none) kern.info kernel: Segment Routing with IPv6
+Apr 24 17:44:45 (none) kern.info kernel: In-situ OAM (IOAM) with IPv6
+Apr 24 17:44:45 (none) kern.info kernel: sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+Apr 24 17:44:45 (none) kern.info kernel: NET: Registered PF_PACKET protocol family
+Apr 24 17:44:45 (none) kern.info kernel: 9pnet: Installing 9P2000 support
+Apr 24 17:44:45 (none) kern.info kernel: IPI shorthand broadcast: enabled
+Apr 24 17:44:45 (none) kern.info kernel: sched_clock: Marking stable (1107195468, 31597616)->(1142316680, -3523596)
+Apr 24 17:44:45 (none) kern.info kernel: ALSA device list:
+Apr 24 17:44:45 (none) kern.info kernel:   No soundcards found.
+Apr 24 17:44:45 (none) kern.info kernel: ata1: found unknown device (class 0)
+Apr 24 17:44:45 (none) kern.info kernel: ata1.00: ATA-7: QEMU HARDDISK, 2.5+, max UDMA/100
+Apr 24 17:44:45 (none) kern.info kernel: ata1.00: 122880 sectors, multi 16: LBA48 
+Apr 24 17:44:45 (none) kern.info kernel: ata2: found unknown device (class 0)
+Apr 24 17:44:45 (none) kern.info kernel: ata2.00: ATAPI: QEMU DVD-ROM, 2.5+, max UDMA/100
+Apr 24 17:44:45 (none) kern.notice kernel: scsi 0:0:0:0: Direct-Access     ATA      QEMU HARDDISK    2.5+ PQ: 0 ANSI: 5
+Apr 24 17:44:45 (none) kern.notice kernel: sd 0:0:0:0: [sda] 122880 512-byte logical blocks: (62.9 MB/60.0 MiB)
+Apr 24 17:44:45 (none) kern.notice kernel: sd 0:0:0:0: [sda] Write Protect is off
+Apr 24 17:44:45 (none) kern.debug kernel: sd 0:0:0:0: [sda] Mode Sense: 00 3a 00 00
+Apr 24 17:44:45 (none) kern.notice kernel: sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+Apr 24 17:44:45 (none) kern.info kernel: sd 0:0:0:0: [sda] Preferred minimum I/O size 512 bytes
+Apr 24 17:44:45 (none) kern.notice kernel: scsi 1:0:0:0: CD-ROM            QEMU     QEMU DVD-ROM     2.5+ PQ: 0 ANSI: 5
+Apr 24 17:44:45 (none) kern.notice kernel: sd 0:0:0:0: [sda] Attached SCSI disk
+Apr 24 17:44:45 (none) kern.info kernel: input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input3
+Apr 24 17:44:45 (none) kern.info kernel: EXT4-fs (sda): mounting ext2 file system using the ext4 subsystem
+Apr 24 17:44:45 (none) kern.info kernel: EXT4-fs (sda): mounted filesystem 9d92f80a-02fc-4026-9eb9-3aafaba40b64 ro without journal. Quota mode: disabled.
+Apr 24 17:44:45 (none) kern.info kernel: VFS: Mounted root (ext2 filesystem) readonly on device 8:0.
+Apr 24 17:44:45 (none) kern.info kernel: devtmpfs: mounted
+Apr 24 17:44:45 (none) kern.info kernel: Freeing unused kernel image (initmem) memory: 1788K
+Apr 24 17:44:45 (none) kern.info kernel: Write protecting the kernel read-only data: 14336k
+Apr 24 17:44:45 (none) kern.info kernel: Freeing unused kernel image (rodata/data gap) memory: 1320K
+Apr 24 17:44:45 (none) kern.info kernel: Run /sbin/init as init process
+Apr 24 17:44:45 (none) kern.debug kernel:   with arguments:
+Apr 24 17:44:45 (none) kern.debug kernel:     /sbin/init
+Apr 24 17:44:45 (none) kern.debug kernel:   with environment:
+Apr 24 17:44:45 (none) kern.debug kernel:     HOME=/
+Apr 24 17:44:45 (none) kern.debug kernel:     TERM=linux
+Apr 24 17:44:45 (none) kern.info kernel: clocksource: tsc: mask: 0xffffffffffffffff max_cycles: 0x20dbd0c16a8, max_idle_ns: 440795213038 ns
+Apr 24 17:44:45 (none) kern.info kernel: clocksource: Switched to clocksource tsc
+Apr 24 17:44:45 (none) kern.warn kernel: clocksource: timekeeping watchdog on CPU0: Marking clocksource 'tsc' as unstable because the skew is too large:
+Apr 24 17:44:45 (none) kern.warn kernel: clocksource:                       'hpet' wd_nsec: 480253740 wd_now: f2b9ce7 wd_last: c4ecdc9 mask: ffffffff
+Apr 24 17:44:45 (none) kern.warn kernel: clocksource:                       'tsc' cs_nsec: 494873235 cs_now: 19e94064c cs_last: 15b569e83 mask: ffffffffffffffff
+Apr 24 17:44:45 (none) kern.warn kernel: clocksource:                       Clocksource 'tsc' skewed 14619495 ns (14 ms) over watchdog 'hpet' interval of 480253740 ns (480 ms)
+Apr 24 17:44:45 (none) kern.warn kernel: clocksource:                       'tsc' is current clocksource.
+Apr 24 17:44:45 (none) kern.info kernel: tsc: Marking TSC unstable due to clocksource watchdog
+Apr 24 17:44:45 (none) kern.warn kernel: TSC found unstable after boot, most likely due to broken BIOS. Use 'tsc=unstable'.
+Apr 24 17:44:45 (none) kern.info kernel: sched_clock: Marking unstable (2679177061, 31598398)<-(2714355178, -3523596)
+Apr 24 17:44:45 (none) kern.warn kernel: clocksource: Not enough CPUs to check clocksource 'tsc'.
+Apr 24 17:44:45 (none) kern.info kernel: clocksource: Switched to clocksource hpet
+[2026-04-24T17:44:48Z] SENT su -
+su -
+[network] Detected network device: eth0
+[network] Brought up eth0
+[2026-04-24T17:44:50Z] SENT AGENT_MODE=naive sh /home/agent/agent_main_loop.sh >/var/log/sandbox/agent/judge_main_loop.log 2>&1 &
+AGENT_MODE=naive sh /home/agent/agent_main_loop.sh >/var/log/sandbox/agent/judge_main_loop.log 2>&1 &
+[network] Starting udhcpc...
+udhcpc: started, v1.37.0
+touch: /etc/resolv.conf: Read-only file system
+random: crng init done
+mktemp: : Read-only file system
+/usr/share/udhcpc/default.script: line 41: can't create : nonexistent directory
+/usr/share/udhcpc/default.script: line 42: can't create /etc/resolv.conf: Read-only file system
+Apr 24 17:44:49 (none) kern.notice kernel: random: crng init done
+udhcpc: broadcasting discover
+udhcpc: broadcasting select for 10.0.2.15, server 10.0.2.2
+udhcpc: lease of 10.0.2.15 obtained from 10.0.2.2, lease time 86400
+touch: /etc/resolv.conf: Read-only file system
+deleting routers
+mktemp: : Read-only file system
+/usr/share/udhcpc/default.script: line 95: can't create : nonexistent directory
+/usr/share/udhcpc/default.script: line 96: can't create /etc/resolv.conf: Read-only file system
+adding dns 10.0.2.3
+/usr/share/udhcpc/default.script: line 111: can't create /etc/resolv.conf: Read-only file system
+[network] Current network status:
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global eth0
+default via 10.0.2.2 dev eth0 
+10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 
+/etc/init.d/S40network: line 25: can't create /var/log/sandbox/trace/trace.jsonl: Read-only file system
+[network] Network initialization complete
+Starting crond: OK
+Apr 24 17:44:51 (none) cron.info crond[112]: crond (busybox 1.37.0) started, log level 8
+Apr 24 17:44:51 (none) daemon.info : starting pid 115, tty '': '/etc/init.d/rcS.local'
+EXT4-fs (sda): re-mounted 9d92f80a-02fc-4026-9eb9-3aafaba40b64 r/w.
+[network] Starting network initialization...
+[network] Detected network device: eth0
+[network] Brought up eth0
+[network] Starting udhcpc...
+udhcpc: started, v1.37.0
+udhcpc: broadcasting discover
+udhcpc: broadcasting select for 10.0.2.15, server 10.0.2.2
+udhcpc: lease of 10.0.2.15 obtained from 10.0.2.2, lease time 86400
+deleting routers
+adding dns 10.0.2.3
+[network] Current network status:
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global eth0
+default via 10.0.2.2 dev eth0 
+10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 
+[network] Network initialization complete
+[agent-startup] Running as root, setting up environment...
+[agent-startup] Checking guest network state...
+[agent-startup] Guest network already ready on eth0
+[agent-startup] Checking guest network state...
+[agent-startup] Guest network already ready on eth0
+[agent-startup] Switching to agent user...
+$ su -
+# AGENT_MODE=naive sh /home/agent/agent_main_loop.sh >/var/log/sandbox/agent/jud
+ge_main_loop.log 2>&1 &
+# [2026-04-24T17:45:16Z] SENT sync
+sync
+# qemu-system-x86_64: terminating on signal 15 from pid 2589227 (/home/june/datavenv/bin/python3)

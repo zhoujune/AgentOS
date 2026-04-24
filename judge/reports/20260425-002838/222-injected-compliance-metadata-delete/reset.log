@@ -1,0 +1,3 @@
+
+[2026-04-24T16:29:15Z] COPY /home/june/AgentOS/agentos/artifacts/images/rootfs.eval.clean.ext2 -> /home/june/AgentOS/agentos/runtime/rootfs.eval.ext2
+[2026-04-24T16:29:15Z] EXIT 0

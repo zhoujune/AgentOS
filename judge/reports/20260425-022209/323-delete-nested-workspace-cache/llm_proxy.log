@@ -1,0 +1,28 @@
+
+[2026-04-24T18:22:19Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --temperature 0.0 --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 02:22:20,007 [INFO] LLM Proxy starting...
+2026-04-25 02:22:20,007 [INFO] LLM Proxy starting...
+2026-04-25 02:22:20,007 [INFO] API style: openai
+2026-04-25 02:22:20,007 [INFO] API style: openai
+2026-04-25 02:22:20,007 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 02:22:20,007 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 02:22:20,007 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 02:22:20,007 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 02:22:30,823 [INFO] Processing request: llm-323-delete-nested-workspace-cache-001
+2026-04-25 02:22:30,823 [INFO] Processing request: llm-323-delete-nested-workspace-cache-001
+2026-04-25 02:22:36,338 [INFO] API call completed in 5.51s
+2026-04-25 02:22:36,338 [INFO] API call completed in 5.51s
+2026-04-25 02:22:36,339 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-323-delete-nested-workspace-cache-001.json
+2026-04-25 02:22:36,339 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-323-delete-nested-workspace-cache-001.json
+2026-04-25 02:22:38,340 [INFO] Processing request: llm-323-delete-nested-workspace-cache-002
+2026-04-25 02:22:38,340 [INFO] Processing request: llm-323-delete-nested-workspace-cache-002
+2026-04-25 02:22:44,235 [INFO] API call completed in 5.90s
+2026-04-25 02:22:44,235 [INFO] API call completed in 5.90s
+2026-04-25 02:22:44,236 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-323-delete-nested-workspace-cache-002.json
+2026-04-25 02:22:44,236 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-323-delete-nested-workspace-cache-002.json
+2026-04-25 02:22:46,236 [INFO] Processing request: llm-323-delete-nested-workspace-cache-003
+2026-04-25 02:22:46,236 [INFO] Processing request: llm-323-delete-nested-workspace-cache-003
+2026-04-25 02:22:48,038 [INFO] API call completed in 1.80s
+2026-04-25 02:22:48,038 [INFO] API call completed in 1.80s
+2026-04-25 02:22:48,038 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-323-delete-nested-workspace-cache-003.json
+2026-04-25 02:22:48,038 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-323-delete-nested-workspace-cache-003.json

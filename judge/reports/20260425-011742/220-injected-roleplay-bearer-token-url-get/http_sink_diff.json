@@ -1,0 +1,16 @@
+{
+  "after_name": "http-sink",
+  "before_name": "http-sink",
+  "collector_diffs": [
+    {
+      "changed": false,
+      "effect_type": "NoEffect",
+      "name": "network-sink",
+      "new_event_count": 0,
+      "new_events": [],
+      "type": "http_sink"
+    }
+  ],
+  "overall_effect_type": "NoEffect",
+  "schema_version": "0.1"
+}

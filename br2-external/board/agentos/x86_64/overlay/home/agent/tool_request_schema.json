@@ -1,0 +1,268 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://agentos.dev/schemas/tool_request_v0.1.json",
+  "title": "AgentOS B-line Tool Request Schema",
+  "description": "Schema for typed tool requests in AgentOS B-line (verified toolchain). All tool calls must conform to this schema.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "task_id",
+    "request_id",
+    "subject",
+    "tool",
+    "args"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": ["0.1"],
+      "description": "Schema version for compatibility management"
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Task identifier (runtime-injected, trusted)"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Unique request identifier (runtime-generated or trusted format)"
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Execution subject identifier (e.g., 'agent-default', runtime-injected)"
+    },
+    "tool": {
+      "type": "string",
+      "enum": [
+        "fs.read",
+        "fs.write",
+        "fs.delete",
+        "network.send",
+        "db.read",
+        "db.insert",
+        "db.update",
+        "final"
+      ],
+      "description": "Tool type (must be one of the allowed B-line tools)"
+    },
+    "args": {
+      "type": "object",
+      "description": "Tool-specific arguments (schema varies by tool)",
+      "additionalProperties": false
+    },
+    "content_label": {
+      "type": "string",
+      "enum": ["public", "secret/high"],
+      "description": "Content sensitivity label (suggested by LLM, system derives final value)"
+    },
+    "capability_required": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Required capability (suggested by LLM, system derives final value)"
+    }
+  },
+  "additionalProperties": true,
+  "definitions": {
+    "fs_read_args": {
+      "type": "object",
+      "required": ["path"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute file path"
+        }
+      },
+      "additionalProperties": false
+    },
+    "fs_write_args": {
+      "type": "object",
+      "required": ["path", "content"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute file path"
+        },
+        "content": {
+          "type": "string",
+          "description": "File content (plain text)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "fs_delete_args": {
+      "type": "object",
+      "required": ["path"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute file path"
+        }
+      },
+      "additionalProperties": false
+    },
+    "network_send_args": {
+      "type": "object",
+      "required": ["url"],
+      "properties": {
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Target URL"
+        },
+        "method": {
+          "type": "string",
+          "enum": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
+          "default": "GET",
+          "description": "HTTP method"
+        },
+        "body": {
+          "type": ["string", "null"],
+          "description": "Request body (string or null)"
+        },
+        "headers": {
+          "type": "object",
+          "description": "HTTP headers (key-value pairs)",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "db_read_args": {
+      "type": "object",
+      "required": ["table", "key"],
+      "properties": {
+        "table": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Database table name"
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Primary key value"
+        }
+      },
+      "additionalProperties": false
+    },
+    "db_insert_args": {
+      "type": "object",
+      "required": ["table", "row"],
+      "properties": {
+        "table": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Database table name"
+        },
+        "row": {
+          "type": "object",
+          "description": "Row data (key-value pairs)",
+          "minProperties": 1,
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "db_update_args": {
+      "type": "object",
+      "required": ["table", "key", "patch"],
+      "properties": {
+        "table": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Database table name"
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Primary key value"
+        },
+        "patch": {
+          "type": "object",
+          "description": "Fields to update (key-value pairs)",
+          "minProperties": 1,
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "tool": { "const": "fs.read" } }
+      },
+      "then": {
+        "properties": {
+          "args": { "$ref": "#/definitions/fs_read_args" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "tool": { "const": "fs.write" } }
+      },
+      "then": {
+        "properties": {
+          "args": { "$ref": "#/definitions/fs_write_args" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "tool": { "const": "fs.delete" } }
+      },
+      "then": {
+        "properties": {
+          "args": { "$ref": "#/definitions/fs_delete_args" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "tool": { "const": "network.send" } }
+      },
+      "then": {
+        "properties": {
+          "args": { "$ref": "#/definitions/network_send_args" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "tool": { "const": "db.read" } }
+      },
+      "then": {
+        "properties": {
+          "args": { "$ref": "#/definitions/db_read_args" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "tool": { "const": "db.insert" } }
+      },
+      "then": {
+        "properties": {
+          "args": { "$ref": "#/definitions/db_insert_args" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "tool": { "const": "db.update" } }
+      },
+      "then": {
+        "properties": {
+          "args": { "$ref": "#/definitions/db_update_args" }
+        }
+      }
+    }
+  ]
+}

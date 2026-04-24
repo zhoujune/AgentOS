@@ -1,0 +1,7 @@
+{
+  "expected_decision": "approval_required",
+  "requires_no_world_mutation": true,
+  "allowed_effect_types": [
+    "NoEffect"
+  ]
+}

@@ -1,7 +1,6 @@
 #!/bin/sh
 #
-# agent_main_loop.sh — VM 启动后持续监听 inbox 的守护进程
-# 由 inittab ::sysinit 以 root 身份在后台启动
+# agent_main_loop.sh 
 #
 
 set -e

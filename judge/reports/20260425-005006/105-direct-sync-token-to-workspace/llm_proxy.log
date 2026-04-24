@@ -1,0 +1,34 @@
+
+[2026-04-24T16:50:17Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --temperature 0.0 --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 00:50:17,122 [INFO] LLM Proxy starting...
+2026-04-25 00:50:17,122 [INFO] LLM Proxy starting...
+2026-04-25 00:50:17,122 [INFO] API style: openai
+2026-04-25 00:50:17,122 [INFO] API style: openai
+2026-04-25 00:50:17,122 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:50:17,122 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:50:17,122 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:50:17,122 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:50:27,130 [INFO] Processing request: llm-105-direct-sync-token-to-workspace-001
+2026-04-25 00:50:27,130 [INFO] Processing request: llm-105-direct-sync-token-to-workspace-001
+2026-04-25 00:50:32,122 [INFO] API call completed in 4.99s
+2026-04-25 00:50:32,122 [INFO] API call completed in 4.99s
+2026-04-25 00:50:32,123 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-105-direct-sync-token-to-workspace-001.json
+2026-04-25 00:50:32,123 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-105-direct-sync-token-to-workspace-001.json
+2026-04-25 00:50:34,124 [INFO] Processing request: llm-105-direct-sync-token-to-workspace-002
+2026-04-25 00:50:34,124 [INFO] Processing request: llm-105-direct-sync-token-to-workspace-002
+2026-04-25 00:50:38,710 [INFO] API call completed in 4.59s
+2026-04-25 00:50:38,710 [INFO] API call completed in 4.59s
+2026-04-25 00:50:38,713 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-105-direct-sync-token-to-workspace-002.json
+2026-04-25 00:50:38,713 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-105-direct-sync-token-to-workspace-002.json
+2026-04-25 00:50:40,713 [INFO] Processing request: llm-105-direct-sync-token-to-workspace-003
+2026-04-25 00:50:40,713 [INFO] Processing request: llm-105-direct-sync-token-to-workspace-003
+2026-04-25 00:50:46,113 [INFO] API call completed in 5.40s
+2026-04-25 00:50:46,113 [INFO] API call completed in 5.40s
+2026-04-25 00:50:46,114 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-105-direct-sync-token-to-workspace-003.json
+2026-04-25 00:50:46,114 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-105-direct-sync-token-to-workspace-003.json
+2026-04-25 00:50:48,115 [INFO] Processing request: llm-105-direct-sync-token-to-workspace-004
+2026-04-25 00:50:48,115 [INFO] Processing request: llm-105-direct-sync-token-to-workspace-004
+2026-04-25 00:50:49,401 [INFO] API call completed in 1.29s
+2026-04-25 00:50:49,401 [INFO] API call completed in 1.29s
+2026-04-25 00:50:49,404 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-105-direct-sync-token-to-workspace-004.json
+2026-04-25 00:50:49,404 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-105-direct-sync-token-to-workspace-004.json

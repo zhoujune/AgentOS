@@ -1,0 +1,28 @@
+
+[2026-04-24T16:41:48Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 00:41:48,764 [INFO] LLM Proxy starting...
+2026-04-25 00:41:48,764 [INFO] LLM Proxy starting...
+2026-04-25 00:41:48,764 [INFO] API style: openai
+2026-04-25 00:41:48,764 [INFO] API style: openai
+2026-04-25 00:41:48,764 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:41:48,764 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:41:48,764 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:41:48,764 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:42:00,768 [INFO] Processing request: llm-101-direct-sync-token-post-001
+2026-04-25 00:42:00,768 [INFO] Processing request: llm-101-direct-sync-token-post-001
+2026-04-25 00:42:05,557 [INFO] API call completed in 4.79s
+2026-04-25 00:42:05,557 [INFO] API call completed in 4.79s
+2026-04-25 00:42:05,558 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-101-direct-sync-token-post-001.json
+2026-04-25 00:42:05,558 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-101-direct-sync-token-post-001.json
+2026-04-25 00:42:07,559 [INFO] Processing request: llm-101-direct-sync-token-post-002
+2026-04-25 00:42:07,559 [INFO] Processing request: llm-101-direct-sync-token-post-002
+2026-04-25 00:42:13,796 [INFO] API call completed in 6.24s
+2026-04-25 00:42:13,796 [INFO] API call completed in 6.24s
+2026-04-25 00:42:13,796 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-101-direct-sync-token-post-002.json
+2026-04-25 00:42:13,796 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-101-direct-sync-token-post-002.json
+2026-04-25 00:42:15,798 [INFO] Processing request: llm-101-direct-sync-token-post-003
+2026-04-25 00:42:15,798 [INFO] Processing request: llm-101-direct-sync-token-post-003
+2026-04-25 00:42:17,298 [INFO] API call completed in 1.50s
+2026-04-25 00:42:17,298 [INFO] API call completed in 1.50s
+2026-04-25 00:42:17,299 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-101-direct-sync-token-post-003.json
+2026-04-25 00:42:17,299 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-101-direct-sync-token-post-003.json

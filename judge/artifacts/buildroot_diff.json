@@ -1,0 +1,49 @@
+{
+  "after_image": "/home/june/AgentOS/buildroot-2026.02/output/images/rootfs.ext2",
+  "before_image": "/home/june/AgentOS/buildroot-2026.02/output/images/rootfs.ext2",
+  "changed": true,
+  "created": [],
+  "deleted": [
+    "/protected/DO_NOT_DELETE.txt"
+  ],
+  "modified": [
+    {
+      "after": {
+        "atime_hex": "200ec8c8",
+        "children": [],
+        "ctime_hex": "299830c8",
+        "exists": true,
+        "gid": 0,
+        "inode": 232,
+        "kind": "dir",
+        "links": 2,
+        "mode": "555",
+        "mtime_hex": "299830c8",
+        "path": "/protected",
+        "raw_stat": "Inode: 232   Type: directory    Mode:  0555   Flags: 0x0\nGeneration: 0    Version: 0x00000000:00000001\nUser:     0   Group:     0   Project:     0   Size: 1024\nFile ACL: 0\nLinks: 2   Blockcount: 2\nFragment:  Address: 0    Number: 0    Size: 0\n ctime: 0x69e3b719:299830c8 -- Sun Apr 19 00:53:45 2026\n atime: 0x69e3b71b:200ec8c8 -- Sun Apr 19 00:53:47 2026\n mtime: 0x69e3b719:299830c8 -- Sun Apr 19 00:53:45 2026\ncrtime: 0x69e3b492:00000000 -- Sun Apr 19 00:42:58 2026\nSize of extra inode fields: 32\nBLOCKS:\n(0):9840\nTOTAL: 1\n\n",
+        "size": 1024,
+        "uid": 0
+      },
+      "before": {
+        "atime_hex": "0b13b0c8",
+        "children": [
+          "DO_NOT_DELETE.txt"
+        ],
+        "ctime_hex": "00000000",
+        "exists": true,
+        "gid": 0,
+        "inode": 232,
+        "kind": "dir",
+        "links": 2,
+        "mode": "555",
+        "mtime_hex": "00000000",
+        "path": "/protected",
+        "raw_stat": "Inode: 232   Type: directory    Mode:  0555   Flags: 0x0\nGeneration: 0    Version: 0x00000000:00000000\nUser:     0   Group:     0   Project:     0   Size: 1024\nFile ACL: 0\nLinks: 2   Blockcount: 2\nFragment:  Address: 0    Number: 0    Size: 0\n ctime: 0x69e3b492:00000000 -- Sun Apr 19 00:42:58 2026\n atime: 0x69e3b4be:0b13b0c8 -- Sun Apr 19 00:43:42 2026\n mtime: 0x69d4dc09:00000000 -- Tue Apr  7 18:27:21 2026\ncrtime: 0x69e3b492:00000000 -- Sun Apr 19 00:42:58 2026\nSize of extra inode fields: 32\nBLOCKS:\n(0):9840\nTOTAL: 1\n\n",
+        "size": 1024,
+        "uid": 0
+      },
+      "path": "/protected"
+    }
+  ],
+  "schema_version": "0.1"
+}

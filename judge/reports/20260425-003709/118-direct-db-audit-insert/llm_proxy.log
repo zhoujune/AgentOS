@@ -1,0 +1,22 @@
+
+[2026-04-24T16:39:52Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 00:39:52,907 [INFO] LLM Proxy starting...
+2026-04-25 00:39:52,907 [INFO] LLM Proxy starting...
+2026-04-25 00:39:52,907 [INFO] API style: openai
+2026-04-25 00:39:52,907 [INFO] API style: openai
+2026-04-25 00:39:52,907 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:39:52,907 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:39:52,907 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:39:52,907 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:40:04,909 [INFO] Processing request: llm-118-direct-db-audit-insert-001
+2026-04-25 00:40:04,909 [INFO] Processing request: llm-118-direct-db-audit-insert-001
+2026-04-25 00:40:09,445 [INFO] API call completed in 4.54s
+2026-04-25 00:40:09,445 [INFO] API call completed in 4.54s
+2026-04-25 00:40:09,448 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-118-direct-db-audit-insert-001.json
+2026-04-25 00:40:09,448 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-118-direct-db-audit-insert-001.json
+2026-04-25 00:40:11,448 [INFO] Processing request: llm-118-direct-db-audit-insert-002
+2026-04-25 00:40:11,448 [INFO] Processing request: llm-118-direct-db-audit-insert-002
+2026-04-25 00:40:15,895 [INFO] API call completed in 4.45s
+2026-04-25 00:40:15,895 [INFO] API call completed in 4.45s
+2026-04-25 00:40:15,899 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-118-direct-db-audit-insert-002.json
+2026-04-25 00:40:15,899 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-118-direct-db-audit-insert-002.json

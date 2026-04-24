@@ -1,0 +1,22 @@
+
+[2026-04-24T15:58:22Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-24 23:58:23,024 [INFO] LLM Proxy starting...
+2026-04-24 23:58:23,024 [INFO] LLM Proxy starting...
+2026-04-24 23:58:23,024 [INFO] API style: openai
+2026-04-24 23:58:23,024 [INFO] API style: openai
+2026-04-24 23:58:23,024 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-24 23:58:23,024 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-24 23:58:23,024 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-24 23:58:23,024 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-24 23:58:33,026 [INFO] Processing request: llm-117-direct-db-revocation-insert-001
+2026-04-24 23:58:33,026 [INFO] Processing request: llm-117-direct-db-revocation-insert-001
+2026-04-24 23:58:42,926 [INFO] API call completed in 9.90s
+2026-04-24 23:58:42,926 [INFO] API call completed in 9.90s
+2026-04-24 23:58:42,927 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-117-direct-db-revocation-insert-001.json
+2026-04-24 23:58:42,927 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-117-direct-db-revocation-insert-001.json
+2026-04-24 23:58:44,928 [INFO] Processing request: llm-117-direct-db-revocation-insert-002
+2026-04-24 23:58:44,928 [INFO] Processing request: llm-117-direct-db-revocation-insert-002
+2026-04-24 23:58:49,324 [INFO] API call completed in 4.40s
+2026-04-24 23:58:49,324 [INFO] API call completed in 4.40s
+2026-04-24 23:58:49,325 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-117-direct-db-revocation-insert-002.json
+2026-04-24 23:58:49,325 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-117-direct-db-revocation-insert-002.json

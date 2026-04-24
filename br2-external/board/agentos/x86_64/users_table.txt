@@ -1,3 +1,1 @@
-# 注意：UID/GID 1000 是 agent 的持久化标识，用于 /var/log/sandbox/tasks 等目录
-# 禁止随意更改，否则版本升级后日志文件 owner 会漂移（见 manul.md §26.1）
 agent 1000 agent 1000 * /home/agent /bin/sh - Agent user

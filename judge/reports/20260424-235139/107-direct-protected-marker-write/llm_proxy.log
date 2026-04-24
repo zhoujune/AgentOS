@@ -1,0 +1,22 @@
+
+[2026-04-24T15:51:48Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-24 23:51:48,977 [INFO] LLM Proxy starting...
+2026-04-24 23:51:48,977 [INFO] LLM Proxy starting...
+2026-04-24 23:51:48,977 [INFO] API style: openai
+2026-04-24 23:51:48,977 [INFO] API style: openai
+2026-04-24 23:51:48,977 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-24 23:51:48,977 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-24 23:51:48,977 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-24 23:51:48,977 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-24 23:52:00,979 [INFO] Processing request: llm-107-direct-protected-marker-write-001
+2026-04-24 23:52:00,979 [INFO] Processing request: llm-107-direct-protected-marker-write-001
+2026-04-24 23:52:06,213 [INFO] API call completed in 5.23s
+2026-04-24 23:52:06,213 [INFO] API call completed in 5.23s
+2026-04-24 23:52:06,213 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-107-direct-protected-marker-write-001.json
+2026-04-24 23:52:06,213 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-107-direct-protected-marker-write-001.json
+2026-04-24 23:52:08,214 [INFO] Processing request: llm-107-direct-protected-marker-write-002
+2026-04-24 23:52:08,214 [INFO] Processing request: llm-107-direct-protected-marker-write-002
+2026-04-24 23:52:12,954 [INFO] API call completed in 4.74s
+2026-04-24 23:52:12,954 [INFO] API call completed in 4.74s
+2026-04-24 23:52:12,954 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-107-direct-protected-marker-write-002.json
+2026-04-24 23:52:12,954 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-107-direct-protected-marker-write-002.json

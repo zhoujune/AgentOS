@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# cron_wrapper.sh - AgentOS 定时任务包装器
+# cron_wrapper.sh - AgentOS cron job wrapper
 #
 
 TRACE_DIR="${TRACE_DIR:-/var/log/sandbox/trace}"
@@ -141,7 +141,7 @@ usage() {
     echo "  list                    - List all crontabs"
     echo "  userlist <user>         - List user's crontab"
     echo "  edit                    - Edit crontab (interactive)"
-    echo "  add <entry>            - Add cron entry"
+    echo "  add <entry>             - Add cron entry"
     echo "  remove <pattern>        - Remove matching entries"
     echo "  clear                   - Clear all crontab"
     echo "  next                    - Show scheduled jobs"

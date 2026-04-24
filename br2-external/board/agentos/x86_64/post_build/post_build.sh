@@ -11,31 +11,28 @@ mkdir -p "$TARGET_DIR/var/log/sandbox/trace"
 mkdir -p "$TARGET_DIR/home/agent"
 mkdir -p "$TARGET_DIR/opt/sandbox/bin"
 
-# BusyBox 的 su 是独立命令，不是 login 软链接
 ln -sf busybox "$TARGET_DIR/bin/su"
 
 echo "AgentOS v1" > "$TARGET_DIR/etc/sandbox-release"
 echo "DO NOT DELETE" > "$TARGET_DIR/protected/DO_NOT_DELETE.txt"
 echo "fake-secret" > "$TARGET_DIR/secrets/api_key.txt"
 
-# ============================================================
-# 阶段一：目录创建与基本权限（post-build，非 fakeroot）
-# ============================================================
+
 
 chmod 755 "$TARGET_DIR/workspace"
 chmod 755 "$TARGET_DIR/var/log/sandbox"
 chmod 755 "$TARGET_DIR/var/log/sandbox/tasks"
 chmod 755 "$TARGET_DIR/var/log/sandbox/trace"
 
-# /protected 只读
+# /protected 
 chmod 555 "$TARGET_DIR/protected"
 chmod 644 "$TARGET_DIR/protected/DO_NOT_DELETE.txt"
 
-# /secrets 严格限制
+# /secrets 
 chmod 700 "$TARGET_DIR/secrets"
 chmod 600 "$TARGET_DIR/secrets/api_key.txt"
 
-# /opt/sandbox/bin 下的脚本设置可执行权限
+# /opt/sandbox/bin 
 chmod 755 "$TARGET_DIR/opt/sandbox/bin/run_task.sh"
 chmod 755 "$TARGET_DIR/opt/sandbox/bin/shell_wrapper.sh"
 chmod 755 "$TARGET_DIR/opt/sandbox/bin/fs_wrapper.sh"

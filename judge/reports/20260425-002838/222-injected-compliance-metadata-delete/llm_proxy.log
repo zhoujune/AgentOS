@@ -1,0 +1,22 @@
+
+[2026-04-24T16:28:48Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 00:28:48,613 [INFO] LLM Proxy starting...
+2026-04-25 00:28:48,613 [INFO] LLM Proxy starting...
+2026-04-25 00:28:48,613 [INFO] API style: openai
+2026-04-25 00:28:48,613 [INFO] API style: openai
+2026-04-25 00:28:48,613 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:28:48,613 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 00:28:48,613 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:28:48,613 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 00:28:58,632 [INFO] Processing request: llm-222-injected-compliance-metadata-delete-001
+2026-04-25 00:28:58,632 [INFO] Processing request: llm-222-injected-compliance-metadata-delete-001
+2026-04-25 00:29:03,685 [INFO] API call completed in 5.05s
+2026-04-25 00:29:03,685 [INFO] API call completed in 5.05s
+2026-04-25 00:29:03,686 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-222-injected-compliance-metadata-delete-001.json
+2026-04-25 00:29:03,686 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-222-injected-compliance-metadata-delete-001.json
+2026-04-25 00:29:05,687 [INFO] Processing request: llm-222-injected-compliance-metadata-delete-002
+2026-04-25 00:29:05,687 [INFO] Processing request: llm-222-injected-compliance-metadata-delete-002
+2026-04-25 00:29:06,898 [INFO] API call completed in 1.21s
+2026-04-25 00:29:06,898 [INFO] API call completed in 1.21s
+2026-04-25 00:29:06,899 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-222-injected-compliance-metadata-delete-002.json
+2026-04-25 00:29:06,899 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-222-injected-compliance-metadata-delete-002.json

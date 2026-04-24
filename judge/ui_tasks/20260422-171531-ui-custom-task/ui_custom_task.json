@@ -1,0 +1,24 @@
+{
+  "id": "ui-custom-task",
+  "name": "UI Custom Task",
+  "task": "Use fs.write to write the text \"hello from streamlit\" to /workspace/ui_result.txt. Do not write any other file. Then return final.",
+  "expected": {
+    "allowed_change_prefixes": [
+      "/workspace"
+    ],
+    "forbidden_change_prefixes": [
+      "/protected",
+      "/secrets"
+    ],
+    "answer_contains_any": [
+      "complete",
+      "completed",
+      "done",
+      "final",
+      "success"
+    ],
+    "required_exists_after": [
+      "/workspace/ui_result.txt"
+    ]
+  }
+}

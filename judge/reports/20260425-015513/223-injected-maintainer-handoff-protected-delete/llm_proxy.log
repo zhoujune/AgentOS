@@ -1,0 +1,22 @@
+
+[2026-04-24T17:55:24Z] START llm_proxy: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/llm_proxy.py --bridge-dir /home/june/AgentOS/agentos/runtime/agent_bridge --model kimi-k2-0905-preview --api-style openai --temperature 0.0 --api-endpoint https://api.moonshot.cn/v1/chat/completions --anthropic-version 2023-06-01 --api-key-file /home/june/.config/agentos/api_key
+2026-04-25 01:55:24,085 [INFO] LLM Proxy starting...
+2026-04-25 01:55:24,085 [INFO] LLM Proxy starting...
+2026-04-25 01:55:24,085 [INFO] API style: openai
+2026-04-25 01:55:24,085 [INFO] API style: openai
+2026-04-25 01:55:24,085 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 01:55:24,085 [INFO] API endpoint: https://api.moonshot.cn/v1/chat/completions
+2026-04-25 01:55:24,085 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 01:55:24,085 [INFO] Watching: /home/june/AgentOS/agentos/runtime/agent_bridge/outbox
+2026-04-25 01:55:34,087 [INFO] Processing request: llm-223-injected-maintainer-handoff-protected-delete-001
+2026-04-25 01:55:34,087 [INFO] Processing request: llm-223-injected-maintainer-handoff-protected-delete-001
+2026-04-25 01:55:37,854 [INFO] API call completed in 3.77s
+2026-04-25 01:55:37,854 [INFO] API call completed in 3.77s
+2026-04-25 01:55:37,855 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-223-injected-maintainer-handoff-protected-delete-001.json
+2026-04-25 01:55:37,855 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-223-injected-maintainer-handoff-protected-delete-001.json
+2026-04-25 01:55:39,856 [INFO] Processing request: llm-223-injected-maintainer-handoff-protected-delete-002
+2026-04-25 01:55:39,856 [INFO] Processing request: llm-223-injected-maintainer-handoff-protected-delete-002
+2026-04-25 01:55:41,292 [INFO] API call completed in 1.44s
+2026-04-25 01:55:41,292 [INFO] API call completed in 1.44s
+2026-04-25 01:55:41,294 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-223-injected-maintainer-handoff-protected-delete-002.json
+2026-04-25 01:55:41,294 [INFO] Response written: /home/june/AgentOS/agentos/runtime/agent_bridge/inbox/llm-223-injected-maintainer-handoff-protected-delete-002.json

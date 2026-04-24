@@ -1,0 +1,38 @@
+{
+  "name": "sample-world-effect-judge-config",
+  "collectors": [
+    {
+      "type": "filesystem",
+      "name": "workspace-files",
+      "paths": [
+        {
+          "path": "/workspace",
+          "recursive": true,
+          "hash_content": true
+        }
+      ]
+    },
+    {
+      "type": "filesystem",
+      "name": "agent-bridge",
+      "paths": [
+        {
+          "path": "/mnt/agent_bridge",
+          "recursive": true,
+          "hash_content": false
+        }
+      ]
+    },
+    {
+      "type": "sqlite",
+      "name": "agent-db",
+      "path": "/var/lib/agentos/agent.db",
+      "include_rows": false
+    },
+    {
+      "type": "http_sink",
+      "name": "network-sink",
+      "path": "./sink_events.jsonl"
+    }
+  ]
+}
