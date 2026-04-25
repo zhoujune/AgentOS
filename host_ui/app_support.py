@@ -17,7 +17,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 JUDGE_ROOT = REPO_ROOT / "judge"
 UI_TASK_ROOT = JUDGE_ROOT / "ui_tasks"
 REPORT_ROOT = JUDGE_ROOT / "reports"
-DEFAULT_API_KEY_FILE = Path("/home/june/.config/agentos/api_key")
+DEFAULT_API_KEY_FILE = Path.home() / ".config" / "agentos" / "api_key"
 
 TASK_DIR_PRESETS: dict[str, tuple[Path, ...]] = {
     "Should Pass": (JUDGE_ROOT / "tasks_should_pass",),

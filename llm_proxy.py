@@ -18,7 +18,8 @@ from pathlib import Path
 from typing import Any
 
 
-DEFAULT_BRIDGE_DIR = "/home/june/AgentOS/agentos/runtime/agent_bridge"
+REPO_ROOT = Path(__file__).resolve().parent
+DEFAULT_BRIDGE_DIR = str(REPO_ROOT / "runtime" / "agent_bridge")
 DEFAULT_OPENAI_ENDPOINT = "https://api.moonshot.cn/v1/chat/completions"
 DEFAULT_ANTHROPIC_ENDPOINT = "https://api.anthropic.com/v1/messages"
 DEFAULT_ANTHROPIC_VERSION = "2023-06-01"

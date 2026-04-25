@@ -124,9 +124,11 @@ setup_root() {
         chmod 600 /var/lib/agentos/agent.db 2>/dev/null || true
     fi
 
-    # mount agent_bridge as root
+    # mount agent_bridge as root if it is not already mounted by init
     mkdir -p /mnt/agent_bridge
-    mount -t 9p -o trans=virtio,cache=loose agent_bridge /mnt/agent_bridge
+    if ! mountpoint -q /mnt/agent_bridge 2>/dev/null; then
+        mount -t 9p -o trans=virtio,cache=loose agent_bridge /mnt/agent_bridge || true
+    fi
     # /mnt/agent_bridge (9P mount point)
     if [ ! -d "$BRIDGE_DIR" ]; then
         echo "[agent-startup] Bridge not mounted, creating fallback..."
@@ -155,12 +157,10 @@ setup_root() {
 write_agent_script() {
     # Keep the overlay-provided /home/agent/agent_main_loop.sh as the source of truth.
     # Do not regenerate it at boot, because that can drift from the checked-in copy.
-    chmod +x "$AGENT_HOME/agent_main_loop.sh"
-    chmod +x "$AGENT_HOME/test_agent_user_runtime.sh"
-    chmod +x "$AGENT_HOME/run_regression.sh"
-    chmod +x "$AGENT_HOME/test_daemon_mode.sh"
+    chmod +x "$AGENT_HOME/agent_main_loop.sh" 2>/dev/null || true
+    chmod +x "$AGENT_HOME/agent_runner.py" 2>/dev/null || true
     chown 1000:1000 "$AGENT_HOME/agent_main_loop.sh" 2>/dev/null || true
-    chown 1000:1000 "$AGENT_HOME/test_agent_user_runtime.sh" 2>/dev/null || true
+    chown 1000:1000 "$AGENT_HOME/agent_runner.py" 2>/dev/null || true
     return 0
 
     cat > "$AGENT_HOME/agent_main_loop.sh" << 'SCRIPT_EOF'

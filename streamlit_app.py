@@ -21,6 +21,62 @@ from host_ui.app_support import (
 )
 
 
+GUIDE_MD = """
+### What This UI Does
+
+This host UI runs the same AgentOS evaluation path used in the paper:
+
+- QEMU boots the AgentOS guest image
+- the guest agent issues LLM requests through the bridge
+- `llm_proxy.py` calls the configured model API
+- VTRM mediates tool actions inside the guest
+- the World Effect Judge checks post-run outcomes
+
+### Before You Start
+
+1. Make sure the built images exist under `artifacts/images/`.
+2. Put your API key in a readable file such as `~/.config/agentos/api_key`.
+3. Confirm the sidebar settings:
+   - API style
+   - API endpoint
+   - model
+   - temperature
+   - API key file
+4. Click `Test LLM Connection`.
+
+If you only want to run the supplied artefacts, no rebuild is needed. A separate Buildroot checkout is only required if you want to rebuild or modify the guest image.
+
+### Recommended Workflow
+
+#### Quick Demo
+
+1. Open `Custom Task`.
+2. Keep `agentos` mode selected.
+3. Run a simple one-off task.
+4. Inspect the final answer and, if needed, the report logs.
+
+#### Benchmark Run
+
+1. Open `Benchmark`.
+2. Choose a suite such as `Should Pass` or `Should Fail / All`.
+3. Select one or more modes.
+4. Run all cases or a selected subset.
+5. Review the summary table and failed-case table.
+
+#### Report Inspection
+
+1. Open `Reports`.
+2. Select a recent run directory.
+3. Inspect `summary.json`, `summary.md`, and case-level details.
+
+### Notes
+
+- `AgentOS-Eval` is the reproducible research profile.
+- `AgentOS-Prod` is the deployment-oriented image derived from the same runtime.
+- The default benchmark model is `kimi-k2-0905-preview` with temperature `0.0`.
+"""
+
+
 def completion_label(value: bool | None) -> str:
     if value is None:
         return "N/A"
@@ -46,10 +102,10 @@ with st.sidebar:
     api_key_path = Path(st.text_input("API key file", value=str(DEFAULT_API_KEY_FILE)))
     task_timeout = st.number_input("Task timeout (seconds)", min_value=30, max_value=900, value=180, step=10)
     vm_boot_timeout = st.number_input("VM boot timeout (seconds)", min_value=30, max_value=300, value=90, step=10)
-    st.markdown(
-        "This UI reuses `/home/june/AgentOS/agentos/judge/run_vtrm_eval.py`, so demo runs and paper benchmarks stay aligned."
-    )
+    st.markdown("This UI reuses `judge/run_vtrm_eval.py`, so demo runs and paper benchmarks stay aligned.")
     st.caption("Use `openai` for OpenAI-compatible endpoints. Use `anthropic` for Claude's native Messages API.")
+    with st.expander("Usage Guide"):
+        st.markdown(GUIDE_MD)
     if st.button("Test LLM Connection"):
         try:
             with st.spinner("Testing LLM connection..."):
@@ -68,7 +124,7 @@ with st.sidebar:
         except Exception as exc:
             st.error(f"LLM test failed: {exc}")
 
-tab_custom, tab_bench, tab_reports = st.tabs(["Custom Task", "Benchmark", "Reports"])
+tab_custom, tab_bench, tab_reports, tab_guide = st.tabs(["Custom Task", "Benchmark", "Reports", "Guide"])
 
 with tab_custom:
     st.subheader("Run a One-Off Task")
@@ -310,3 +366,8 @@ with tab_reports:
         if summary_md.exists():
             with st.expander("summary.md"):
                 st.text(read_text(summary_md))
+
+with tab_guide:
+    st.subheader("Usage Guide")
+    st.markdown(GUIDE_MD)
+    st.info("For the full operator guide, see `README.md` in the repository root.")

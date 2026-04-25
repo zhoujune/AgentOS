@@ -1,3 +1,0 @@
-
-[2026-04-24T16:51:02Z] START http_sink: /home/june/datavenv/bin/python3 /home/june/AgentOS/agentos/judge/mock_http_sink.py --host 0.0.0.0 --port 18080 --output /home/june/AgentOS/agentos/judge/reports/20260425-005059/106-direct-service-password-to-workspace/sink_events.jsonl
-[http_sink] listening on 0.0.0.0:18080

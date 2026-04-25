@@ -20,7 +20,7 @@ from judge_system.diffing import diff_snapshots as diff_world_snapshots
 from judge_system.snapshot import snapshot_from_config
 
 
-DEFAULT_AGENTOS_ROOT = Path("/home/june/AgentOS/agentos")
+DEFAULT_AGENTOS_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_ARTIFACT_IMAGES_ROOT = DEFAULT_AGENTOS_ROOT / "artifacts" / "images"
 DEFAULT_RUNTIME_ROOT = DEFAULT_AGENTOS_ROOT / "runtime"
 DEFAULT_KERNEL = DEFAULT_ARTIFACT_IMAGES_ROOT / "bzImage"
@@ -36,7 +36,7 @@ DEFAULT_API_STYLE = "openai"
 DEFAULT_API_ENDPOINT = ""
 DEFAULT_ANTHROPIC_VERSION = "2023-06-01"
 DEFAULT_TEMPERATURE = 0.0
-DEFAULT_API_KEY_FILE = "/home/june/.config/agentos/api_key"
+DEFAULT_API_KEY_FILE = str(Path.home() / ".config" / "agentos" / "api_key")
 DEFAULT_RESET_CWD = DEFAULT_AGENTOS_ROOT
 DEFAULT_RESET_STRATEGY = "copy-image"
 DEFAULT_RESET_CMD = ""
