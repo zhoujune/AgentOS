@@ -7,3 +7,17 @@ test_api.py
 agentos_top_level_design_docs/
 _recover_from_image/
 tests/
+
+# local/generated
+__pycache__/
+runtime/
+judge/reports/
+manul.md
+README_B_LINE.md
+test_api.py
+agentos_top_level_design_docs/
+_recover_from_image/
+tests/
+artifacts/images/rootfs.ext2
+artifacts/images/rootfs.tar
+packages/*Zone.Identifier
