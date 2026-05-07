@@ -83,23 +83,40 @@ def completion_label(value: bool | None) -> str:
     return "PASS" if value else "FAIL"
 
 
-st.set_page_config(page_title="AgentOS Host UI", page_icon="🛡️", layout="wide")
+st.set_page_config(page_title="AgentOS Host UI", page_icon="???", layout="wide")
 
 st.title("AgentOS Host UI")
 st.caption("Host-side demo and benchmark console for AgentOS, VTRM, and the World Effect Judge.")
 
+if "api_style" not in st.session_state:
+    st.session_state.api_style = "openai"
+if "api_endpoint" not in st.session_state:
+    st.session_state.api_endpoint = "https://api.moonshot.cn/v1/chat/completions"
+if "model_name" not in st.session_state:
+    st.session_state.model_name = "kimi-k2-0905-preview"
+if "temperature" not in st.session_state:
+    st.session_state.temperature = 0.0
+if "api_key_file" not in st.session_state:
+    st.session_state.api_key_file = str(DEFAULT_API_KEY_FILE)
+
+
+def sync_default_endpoint() -> None:
+    if st.session_state.api_style == "anthropic":
+        st.session_state.api_endpoint = "https://api.anthropic.com/v1/messages"
+    elif st.session_state.api_endpoint in {
+        "",
+        "https://api.anthropic.com/v1/messages",
+        "https://api.moonshot.cn/v1/chat/completions",
+    }:
+        st.session_state.api_endpoint = "https://api.moonshot.cn/v1/chat/completions"
+
 with st.sidebar:
     st.header("Run Settings")
-    api_style = st.selectbox("API style", options=["openai", "anthropic"], index=0)
-    default_endpoint_value = (
-        "https://api.moonshot.cn/v1/chat/completions"
-        if api_style == "openai"
-        else "https://api.anthropic.com/v1/messages"
-    )
-    api_endpoint = st.text_input("Custom API endpoint (optional)", value=default_endpoint_value)
-    default_model = st.text_input("Model", value="kimi-k2-0905-preview")
-    temperature = st.slider("Temperature", min_value=0.0, max_value=1.5, value=0.0, step=0.1)
-    api_key_path = Path(st.text_input("API key file", value=str(DEFAULT_API_KEY_FILE)))
+    api_style = st.selectbox("API style", options=["openai", "anthropic"], key="api_style", on_change=sync_default_endpoint)
+    api_endpoint = st.text_input("Custom API endpoint (optional)", key="api_endpoint")
+    default_model = st.text_input("Model", key="model_name")
+    temperature = st.slider("Temperature", min_value=0.0, max_value=1.5, step=0.1, key="temperature")
+    api_key_path = Path(st.text_input("API key file", key="api_key_file"))
     task_timeout = st.number_input("Task timeout (seconds)", min_value=30, max_value=900, value=180, step=10)
     vm_boot_timeout = st.number_input("VM boot timeout (seconds)", min_value=30, max_value=300, value=90, step=10)
     st.markdown("This UI reuses `judge/run_vtrm_eval.py`, so demo runs and paper benchmarks stay aligned.")
